@@ -1,9 +1,12 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
-import { ButtonHTMLAttributes } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import './Login.css';
+import AuthContext from "./context/AuthProvider";
+import axios from "./api/axios";
+const LOGIN_URL = "/auth";
 
 const Login: React.FC = () => {
+    const {setAuth} = useContext(AuthContext);
     const userRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
 
@@ -14,10 +17,24 @@ const Login: React.FC = () => {
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(User,Pwd);
-        setUser('');
-        setPwd('');
-        setSuccess(true);
+        try {
+            const response = await axios.post(LOGIN_URL, 
+                JSON.stringify({User,Pwd}),
+                {
+                    headers: {'Content-Type': 'application/json'},
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({User,Pwd,roles,accessToken})
+            setUser('');
+            setPwd('');
+            setSuccess(true);
+        } catch (err) {
+        }        
     }
 
     useEffect(() => {
