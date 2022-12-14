@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useContext } from "react";
 import './Login.css';
 import AuthContext from "./context/AuthProvider";
 import axios from "./api/axios";
+import { AxiosError } from "axios";
 const LOGIN_URL = "/auth";
 
 const Login = () => {
@@ -33,7 +34,19 @@ const Login = () => {
             setUser('');
             setPwd('');
             setSuccess(true);
-        } catch (err) {
+        } catch (err:unknown) {
+            if (err instanceof AxiosError) {
+                if (!err?.response) {
+                    setErrMSG("No Server Response");
+                } else if (err.response?.status === 400) {
+                    setErrMSG("Missing Username/Password");
+                } else if (err.response?.status === 401) {
+                    setErrMSG("Unauthorised");
+                } else {
+                    setErrMSG("Login failed");
+                }
+                errRef.current?.focus()
+            }
         }        
     }
 
