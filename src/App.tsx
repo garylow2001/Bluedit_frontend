@@ -1,13 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './Login';
+import Login from './pages/Login';
+import Threads from './pages/ThreadView';
+import Posts from './pages/PostView';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
     <main className="App">
-        <h1>HELLOx</h1>
-        <Login/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login/>} />
+          <Route path="/threads" element={<Threads/>} />
+          <Route path="/posts" element={<Posts/>} />
+        </Routes>
+      </BrowserRouter>
     </main>
   );
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import './Login.css';
-import AuthContext from "./context/AuthProvider";
-import axios from "./api/axios";
+import AuthContext from "../context/AuthProvider";
+import { Link } from 'react-router-dom';
+import axios from "../api/axios";
 import { AxiosError } from "axios";
 const LOGIN_URL = "/auth";
 
@@ -17,37 +18,40 @@ const Login = () => {
     const [Success,setSuccess] = useState(false);
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post(LOGIN_URL, 
-                JSON.stringify({User,Pwd}),
-                {
-                    headers: {'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({User,Pwd,roles,accessToken})
-            setUser('');
-            setPwd('');
-            setSuccess(true);
-        } catch (err:unknown) {
-            if (err instanceof AxiosError) {
-                if (!err?.response) {
-                    setErrMSG("No Server Response");
-                } else if (err.response?.status === 400) {
-                    setErrMSG("Missing Username/Password");
-                } else if (err.response?.status === 401) {
-                    setErrMSG("Unauthorised");
-                } else {
-                    setErrMSG("Login failed");
-                }
-                errRef.current?.focus()
-            }
-        }        
+        // e.preventDefault();
+        // try {
+        //     const response = await axios.post(LOGIN_URL, 
+        //         JSON.stringify({User,Pwd}),
+        //         {
+        //             headers: {'Content-Type': 'application/json'},
+        //             withCredentials: true
+        //         }
+        //     );
+        //     console.log(JSON.stringify(response?.data));
+        //     console.log(JSON.stringify(response));
+        //     const accessToken = response?.data?.accessToken;
+        //     const roles = response?.data?.roles;
+        //     setAuth({User,Pwd,roles,accessToken})
+        //     setUser('');
+        //     setPwd('');
+        //     setSuccess(true);
+        // } catch (err:unknown) {
+        //     if (err instanceof AxiosError) {
+        //         if (!err?.response) {
+        //             setErrMSG("No Server Response");
+        //         } else if (err.response?.status === 400) {
+        //             setErrMSG("Missing Username/Password");
+        //         } else if (err.response?.status === 401) {
+        //             setErrMSG("Unauthorised");
+        //         } else {
+        //             setErrMSG("Login failed");
+        //         }
+        //         errRef.current?.focus()
+        //     }
+        // }
+        setSuccess(true);
+        // setUser('');
+        setPwd('');
     }
 
     useEffect(() => {
@@ -62,14 +66,19 @@ const Login = () => {
         <>
             {Success? (
                 <section>
+                    <h1> Hello,  {User}!</h1>
                     <h1> You are logged in!</h1>
                     <br/>
+                    <p>
+                        <Link to="/threads">Proceed to threads</Link>
+                    </p>
                     <p>
                         <a href=".">Logout</a>
                     </p>
                 </section>)
         :(
         <section>
+            <h1> Welcome to BlueDit</h1>
             <p ref={errRef} className= {ErrMSG?"errmsg" : "offscreen"}
             aria-live="assertive">{ErrMSG}</p>
             <h1>Sign In</h1>
