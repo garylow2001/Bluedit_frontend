@@ -5,7 +5,7 @@ import AuthContext from "./context/AuthProvider";
 import axios from "./api/axios";
 const LOGIN_URL = "/auth";
 
-const Login: React.FC = () => {
+const Login = () => {
     const {setAuth} = useContext(AuthContext);
     const userRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
