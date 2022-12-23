@@ -18,7 +18,7 @@ const Login = () => {
     const [Success,setSuccess] = useState(false);
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
-        // e.preventDefault();
+        e.preventDefault();
         // try {
         //     const response = await axios.post(LOGIN_URL, 
         //         JSON.stringify({User,Pwd}),

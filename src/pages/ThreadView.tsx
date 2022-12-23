@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
 
-const API_URL = "http://localhost:3000/api/v1/posts"
+const API_URL = "http://localhost:3000/posts"
 function getAPIData() {
     console.log(axios.get(API_URL));
     return axios.get(API_URL).then((response)=> response.data);
