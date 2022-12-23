@@ -3,10 +3,8 @@ import { useRef, useState, useEffect, useContext } from "react";
 import './Login.css';
 import AuthContext from "./context/AuthProvider";
 import axios from "./api/axios";
-<<<<<<< HEAD
-=======
+
 import { AxiosError } from "axios";
->>>>>>> parent of c44e791 (Changed login to always work(need change back) + Added routes to other pages)
 const LOGIN_URL = "/auth";
 
 const Login = () => {
@@ -21,8 +19,6 @@ const Login = () => {
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
         // try {
         //     const response = await axios.post(LOGIN_URL, 
         //         JSON.stringify({User,Pwd}),
@@ -53,46 +49,7 @@ const Login = () => {
         //         errRef.current?.focus()
         //     }
         // }
-        setSuccess(true);        
-=======
-=======
->>>>>>> parent of c44e791 (Changed login to always work(need change back) + Added routes to other pages)
-        try {
-            const response = await axios.post(LOGIN_URL, 
-                JSON.stringify({User,Pwd}),
-                {
-                    headers: {'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({User,Pwd,roles,accessToken})
-            setUser('');
-            setPwd('');
-            setSuccess(true);
-<<<<<<< HEAD
-        } catch (err) {
-        }        
->>>>>>> parent of 40bd9a0 (Fixed axios errors, need to setup register and db)
-=======
-        } catch (err:unknown) {
-            if (err instanceof AxiosError) {
-                if (!err?.response) {
-                    setErrMSG("No Server Response");
-                } else if (err.response?.status === 400) {
-                    setErrMSG("Missing Username/Password");
-                } else if (err.response?.status === 401) {
-                    setErrMSG("Unauthorised");
-                } else {
-                    setErrMSG("Login failed");
-                }
-                errRef.current?.focus()
-            }
-        }        
->>>>>>> parent of c44e791 (Changed login to always work(need change back) + Added routes to other pages)
+        setSuccess(true);
     }
 
     useEffect(() => {
