@@ -2,23 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
+import { token } from './Login';
 
 const API_URL = "http://localhost:3000/posts"
 function getAPIData() {
-    console.log(axios.get(API_URL));
+    console.log(axios.get(API_URL, {
+        headers: {
+            Authorization: "bearer " + token
+        }
+    }));
     return axios.get(API_URL).then((response)=> response.data);
 }
 const Threads = () => {
     const [posts,setposts] = useState([]);
+    // useEffect(()=> {
+    //     let mounted = true;
+    //     getAPIData().then((items) => {
+    //         if (mounted) {
+    //             setposts(items);
+    //         }
+    //     });
+    //     return () => {mounted = false}; 
+    // }, []);
     useEffect(()=> {
-        let mounted = true;
-        getAPIData().then((items) => {
-            if (mounted) {
-                setposts(items);
-            }
-        });
-        return () => {mounted = false}; 
-    }, []);
+        getAPIData()
+    },[])
     return (
         <>
         <h1>Threads</h1>

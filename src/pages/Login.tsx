@@ -3,10 +3,14 @@ import { useRef, useState, useEffect, useContext } from "react";
 import './Login.css';
 import AuthContext from "../context/AuthProvider";
 import { Link } from 'react-router-dom';
-import axios from "../api/axios";
-import { AxiosError } from "axios";
-const LOGIN_URL = "/auth";
+import axios from "axios";
+const API_URL = "http://localhost:3000/login"
+// function getAPIData() {
+//     console.log(axios.get(API_URL));
+//     return axios.get(API_URL).then((response)=> response.data);
+// }
 
+export let token = '';
 const Login = () => {
     const {setAuth} = useContext(AuthContext);
     const userRef = useRef<HTMLInputElement>(null);
@@ -48,10 +52,24 @@ const Login = () => {
         //         }
         //         errRef.current?.focus()
         //     }
-        // }
-        setSuccess(true);
-        // setUser('');
+        // }]
+        await axios.post(API_URL,{"username":User,"password":Pwd}).then(
+            (resp) => {
+                if (resp.data.token) {
+                    console.log(resp.data)
+                    token = (resp.data.token)
+                    setSuccess(true);
+                } else {
+                    console.log("login failed")
+                    alert("Login failed")
+                    setUser('')
+                }
+            }
+        ).catch(
+            (error) => console.log(error)
+        )
         setPwd('');
+        console.log(token)
     }
 
     useEffect(() => {
