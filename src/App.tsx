@@ -1,21 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './pages/Login';
+import Auth from './pages/Auth';
 import Threads from './pages/ThreadView';
 import Posts from './pages/PostView';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppState } from './AppState';
 
-const App = () => {
+const App = (props:any) => {
   return (
     <main className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login/>} />
-          <Route path="/threads" element={<Threads/>} />
-          <Route path="/posts" element={<Posts/>} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Auth/>} />
+            <Route path="/threads" element={<Threads/>} />
+            <Route path="/posts" element={<Posts/>} />
+          </Routes>
+        </BrowserRouter>
     </main>
   );
 }

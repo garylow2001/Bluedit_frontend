@@ -1,6 +1,5 @@
 import React from 'react';
-const Comment = () => {
-    return null;
+const Home = (props:any) => {
+    return <h1>Home</h1>
 }
 export default Comment;
-export {};

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
-import { token } from './Login';
+import { token } from './Auth';
 
 const API_URL = "http://localhost:3000/posts"
 function getAPIData() {
