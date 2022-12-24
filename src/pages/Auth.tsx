@@ -7,9 +7,10 @@ import { useAppState } from "../AppState";
 
 const API_URL = "http://localhost:3000/login"
 
-export let token = '';
+
 const Auth = (props: any) => {
     // const type = props.match.params.form;
+    const [userData,setUserData] = useState<any>()
     const [formData,setFormData] = useState({
         username: "",
         password: ""
@@ -29,29 +30,28 @@ const Auth = (props: any) => {
 
     const {dispatch} = useAppState()
 
-    const handleChange = (e: { target: { name: any; value: any; }; }) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+    useEffect( () => {
+        if (userData) {
+            if (userData.user){
+                const {user,token} = userData
+                dispatch({type: "login", payload: {token, username: user.username}})
+            }
+            else {
+                alert("Wrong username/password")
+                setFormData({username:"",password:""})
+            }
+        }
+    },[userData])
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({...formData, [e.target.id]: e.target.value});
     }
 
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(actions.login);
-        // await axios.post(API_URL,{"username":User,"password":Pwd}).then(
-        //     (resp) => {
-        //         if (resp.data.token) {
-        //             console.log(resp.data)
-        //             token = (resp.data.token)
-        //             setSuccess(true);
-        //         } else {
-        //             console.log("login failed")
-        //             alert("Login failed")
-        //             setUser('')
-        //         }
-        //     }
-        // ).catch(
-        //     (error) => console.log(error)
-        // )
-        // console.log(token)
+        axios.post(API_URL, {"username":formData.username,"password":formData.password}).then(
+            (resp) => setUserData(resp.data)
+        )
     }
     return (
         <>

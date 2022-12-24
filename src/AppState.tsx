@@ -15,25 +15,20 @@ const initialState = {
 // REDUCER
 ///////////////////
 // action = {type: "" ,payload: ...}
+type typeState = {
+    url: string
+    token: string | null
+    username: string | null
+}
 
-const reducer = (state: typeof initialState, action: any) => {
+const reducer = (state: any, action: {type:string, payload:any}) => {
+    let newState;
     switch(action.type) {
         case "login":
-            // fetch(state.url + "/login", {
-            //     method: "post",
-            //     headers: {
-            //         "Content-type" : "application/json"
-            //     },
-            //     body: JSON.stringify(action.payload)
-            // })
-            // .then(response => response.json())
-            // .then(user => {
-            //     return {
-            //         ...state,
-            //         token: user.token,
-            //         username: user.username
-            //     }
-            // })
+            newState = {...state, ...action.payload}
+            console.log(newState)
+            return newState
+            break
         default:
             return state
     }
@@ -50,6 +45,7 @@ type AppContextType = {
     state: any
     dispatch: React.Dispatch<{
         type: any;
+        payload: any
     }>
 }
 const AppContext = React.createContext({} as AppContextType)
