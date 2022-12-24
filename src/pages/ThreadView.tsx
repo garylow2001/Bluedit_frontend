@@ -2,30 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
+import { useAppState } from '../AppState';
+
+
 
 const API_URL = "http://localhost:3000/posts"
-function getAPIData() {
-    console.log(axios.get(API_URL, {
-        headers: {
-            Authorization: "bearer "
-        }
-    }));
-    return axios.get(API_URL).then((response)=> response.data);
-}
+
 const Threads = () => {
+    const {state,dispatch} = useAppState()
     const [posts,setposts] = useState([]);
-    // useEffect(()=> {
-    //     let mounted = true;
-    //     getAPIData().then((items) => {
-    //         if (mounted) {
-    //             setposts(items);
-    //         }
-    //     });
-    //     return () => {mounted = false}; 
-    // }, []);
     useEffect(()=> {
-        getAPIData()
-    },[])
+        let mounted = true;
+        axios.get(API_URL, {
+            headers: {
+                "authorization": "bearer " + state.token
+            }
+        }).then(
+            (resp) => { if (resp.data) {
+                    setposts(resp.data)
+                } else {
+                    alert("need to login") //maybe use a setSuccess page
+                }
+            }
+        )
+        return () => {mounted = false}; 
+    }, []);
+    
     return (
         <>
         <h1>Threads</h1>

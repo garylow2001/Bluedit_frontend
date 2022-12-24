@@ -35,6 +35,7 @@ const Auth = (props: any) => {
             if (userData.user){
                 const {user,token} = userData
                 dispatch({type: "login", payload: {token, username: user.username}})
+                setSuccess(true)
             }
             else {
                 alert("Wrong username/password")
