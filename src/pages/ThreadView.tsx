@@ -19,6 +19,7 @@ const Threads = () => {
             }
         }).then(
             (resp) => { if (resp.data) {
+                    console.log(resp.data) // comment out once done
                     setposts(resp.data)
                 } else {
                     alert("need to login") //maybe use a setSuccess page

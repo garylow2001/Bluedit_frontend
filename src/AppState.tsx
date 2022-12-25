@@ -7,7 +7,8 @@ import React, { useContext, useReducer } from "react";
 const initialState = {
     url: "localhost:3000",
     token: null,
-    username: null
+    username: null,
+    user_id: null
 }
 
 
@@ -19,6 +20,7 @@ type typeState = {
     url: string
     token: string | null
     username: string | null
+    user_id: number | null
 }
 
 const reducer = (state: any, action: {type:string, payload:any}) => {
@@ -26,7 +28,7 @@ const reducer = (state: any, action: {type:string, payload:any}) => {
     switch(action.type) {
         case "login":
             newState = {...state, ...action.payload}
-            console.log(newState)
+            console.log(newState) //comment out once done
             return newState
             break
         default:

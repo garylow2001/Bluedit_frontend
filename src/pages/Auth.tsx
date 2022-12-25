@@ -34,7 +34,7 @@ const Auth = (props: any) => {
         if (userData) {
             if (userData.user){
                 const {user,token} = userData
-                dispatch({type: "login", payload: {token, username: user.username}})
+                dispatch({type: "login", payload: {token, username: user.username, user_id: user.id}})
                 setSuccess(true)
             }
             else {
