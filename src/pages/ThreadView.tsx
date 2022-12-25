@@ -33,7 +33,6 @@ const Threads = () => {
         <>
         <h1>Threads</h1>
             <Posts posts={posts} />
-            <Link to="/posts">Go to posts</Link>
             <Link to="/">Logout</Link>
         </>
     )

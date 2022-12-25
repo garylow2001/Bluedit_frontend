@@ -8,7 +8,8 @@ const initialState = {
     url: "localhost:3000",
     token: null,
     username: null,
-    user_id: null
+    user_id: null,
+    selected_post_id: null
 }
 
 
@@ -16,12 +17,6 @@ const initialState = {
 // REDUCER
 ///////////////////
 // action = {type: "" ,payload: ...}
-type typeState = {
-    url: string
-    token: string | null
-    username: string | null
-    user_id: number | null
-}
 
 const reducer = (state: any, action: {type:string, payload:any}) => {
     let newState;

@@ -9,15 +9,17 @@ import { AppState } from './AppState';
 
 const App = (props:any) => {
   return (
-    <main className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Auth/>} />
-            <Route path="/threads" element={<Threads/>} />
-            <Route path="/posts" element={<Posts/>} />
-          </Routes>
-        </BrowserRouter>
-    </main>
+    <AppState>
+      <main className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Auth/>} />
+              <Route path="/threads" element={<Threads/>} />
+              <Route path="/post/:id" element={<Posts/>} />
+            </Routes>
+          </BrowserRouter>
+      </main>
+    </AppState>
   );
 }
 

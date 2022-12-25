@@ -1,6 +1,5 @@
 import React from 'react';
-const Comment = () => {
+const CommentList= () => {
     return null;
 }
-export default Comment;
-export {};
+export default CommentList;
