@@ -5,7 +5,7 @@ import React, { useContext, useReducer } from "react";
 ////////////////////
 
 const initialState = {
-    url: "localhost:3000",
+    url: "http://localhost:3000",
     token: null,
     username: null,
     user_id: null,
@@ -22,6 +22,11 @@ const reducer = (state: any, action: {type:string, payload:any}) => {
     let newState;
     switch(action.type) {
         case "login":
+            newState = {...state, ...action.payload}
+            console.log(newState) //comment out once done
+            return newState
+            break
+        case "setpost":
             newState = {...state, ...action.payload}
             console.log(newState) //comment out once done
             return newState

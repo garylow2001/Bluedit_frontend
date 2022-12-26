@@ -1,9 +1,6 @@
 import React from 'react';
-import { useAppState } from '../AppState';
 import { Link } from 'react-router-dom';
 const Posts = (props:any) => {
-    const {state, dispatch} = useAppState()
-    
     return <div>
         {props.posts.map((post:any)=> {
             return <div key={post.id}>
@@ -16,7 +13,7 @@ const Posts = (props:any) => {
                     <button>delete</button>
                     </>
                     : ""} */}
-                <Link to={"/post/"+post.id }>Go to post</Link>
+                <Link to={"/post/"+post.id} state= {{post_id: post.id}}>Go to post</Link>
                 </div>
             })
         }
