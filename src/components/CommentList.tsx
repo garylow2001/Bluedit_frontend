@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppState } from '../AppState';
 import axios from 'axios';
 
 const CommentList= (props:any) => {
     const {state, dispatch} = useAppState()
+    const headers = {"authorization": "bearer " + state.token}
     const API_URL = state.url + "/posts/"+ state.selected_post_id
     const post = props.post
     const [EditPost,setEditPost] = useState(false)
@@ -17,6 +18,9 @@ const CommentList= (props:any) => {
 
     const [formData,setFormData] = useState(initialFormData)
     // if bug in handledit, try useeffect initialformdata
+    useEffect(()=> {
+        setFormData(formData)
+    }, [EditPost])
 
     const handleEdit = () => {
         setFormData(initialFormData) // need this to pre-fill text field as somehow placeholder doesn't work
@@ -30,17 +34,22 @@ const CommentList= (props:any) => {
         setFormData({...formData, [e.target.id]: e.target.value});
     }
     const handleDelete = () => {
-        console.log(state)
+        console.log(props)
     }
-    const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
         axios.put(API_URL, {
-            headers: {
-                "authorization": "bearer " + state.token
-            },
-            body:{"title":formData.title, "category":formData.category,"body":post.body}
-        }).then(
-            (resp) => console.log(resp.data)
+            "title":formData.title, 
+            "category":formData.category,
+            "body":formData.body,
+        },{headers}
+        ).then(
+            (resp) => {
+                console.log(resp.data)
+                setEditPost(false)
+            }
+        ).catch(
+            (err) => console.log(err)
         )
     }
     
