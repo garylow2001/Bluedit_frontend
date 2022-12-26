@@ -32,6 +32,7 @@ const Threads = () => {
     return (
         <>
         <h1>Threads</h1>
+            <Link to= "/post/new">Add a new post!</Link>
             <Posts posts={posts} />
             <Link to="/">Logout</Link>
         </>

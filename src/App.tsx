@@ -6,6 +6,7 @@ import Threads from './pages/ThreadView';
 import Posts from './pages/PostView';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppState } from './AppState';
+import NewPost from './pages/NewPost';
 
 const App = (props:any) => {
   return (
@@ -16,6 +17,7 @@ const App = (props:any) => {
               <Route path="/" element={<Auth/>} />
               <Route path="/threads" element={<Threads/>} />
               <Route path="/post/:id" element={<Posts/>} />
+              <Route path="/post/new" element={<NewPost/>} />
             </Routes>
           </BrowserRouter>
       </main>
