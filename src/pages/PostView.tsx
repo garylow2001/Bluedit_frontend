@@ -2,6 +2,7 @@ import { Link, Navigate, useLocation, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
+import CommentList from '../components/CommentList';
 // import CommentList from '../components/CommentList';
 
 
@@ -142,6 +143,7 @@ const PostView = (props:any) => {
                     <button onClick={handleDelete}>delete</button>
                     </>
                     : ""}
+                <CommentList/>
                 </div>
             </div>}
             <div>
