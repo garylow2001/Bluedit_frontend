@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppState } from './AppState';
 import NewPost from './pages/NewPost';
 
-const App = (props:any) => {
+const App = () => {
   return (
     <AppState>
       <main className="App">

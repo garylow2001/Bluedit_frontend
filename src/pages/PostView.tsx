@@ -6,7 +6,7 @@ import CommentList from '../components/CommentList';
 // import CommentList from '../components/CommentList';
 
 
-const PostView = (props:any) => {
+const PostView = () => {
     const location = useLocation()
     const {post_id} = location.state
     const {state,dispatch} = useAppState()
@@ -35,7 +35,7 @@ const PostView = (props:any) => {
     const [formData,setFormData] = useState(EmptyFormData)
     
 
-    const getPost = () => axios.get(API_URL, {
+    const getPost = async () => await axios.get(API_URL, {
         headers: {
             "authorization": "bearer " + state.token
         }
@@ -53,7 +53,7 @@ const PostView = (props:any) => {
                     body:resp.data.body
                 })
             } else {
-                alert("need to login") //maybe use a setSuccess page
+                alert("need to login") //maybe create a error page
             }
         }
     )
@@ -143,7 +143,7 @@ const PostView = (props:any) => {
                     <button onClick={handleDelete}>delete</button>
                     </>
                     : ""}
-                <CommentList/>
+                <CommentList post_id={post_id}/>
                 </div>
             </div>}
             <div>

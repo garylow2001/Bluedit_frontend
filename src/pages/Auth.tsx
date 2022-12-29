@@ -9,7 +9,7 @@ const SIGN_IN_URL = "http://localhost:3000/login"
 const SIGN_UP_URL = "http://localhost:3000/users"
 
 
-const Auth = (props: any) => {
+const Auth = () => {
     // const type = props.match.params.form;
     const navigate = useNavigate()
     const goThreads = () => {
