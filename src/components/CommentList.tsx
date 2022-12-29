@@ -26,6 +26,7 @@ const CommentList= (props: {post_id : number}) => {
             comments.map((comment:any) => {
                 return <div key={comment.id}>
                     <p>{comment.body}</p>
+                    <p>comment by: {comment.username}</p>
                 </div>
             })
         }
