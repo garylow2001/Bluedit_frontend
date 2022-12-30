@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Bluedit (frontend)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+
+## Getting Started using npm/yarn
+
+Make sure to run the Rails server at [Bluedit_backend](https://github.com/garylow2001/Bluedit_backend).
 
 In the project directory, you can run:
+### `npm install`
+or if you use yarn
+### `yarn install`
+
+To start run the app:
 
 ### `npm start`
+or if you use yarn
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Main views in the App
+![image](https://user-images.githubusercontent.com/97083001/210033262-ef96ed1e-18e5-4aee-bdef-0375e411c721.png)
+![image](https://user-images.githubusercontent.com/97083001/210033302-7f8ba283-a3c9-4f7d-9103-8efba0323146.png)
+![image](https://user-images.githubusercontent.com/97083001/210033317-0f69811e-bc7d-4e5a-b433-8f576bc95313.png)
