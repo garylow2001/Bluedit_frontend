@@ -1,7 +1,7 @@
 import React from "react";
-import { useRef, useState, useEffect, useContext } from "react";
+import { useState} from "react";
 import './Auth.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAppState } from "../AppState";
 
@@ -20,7 +20,6 @@ const Auth = () => {
         username: "",
         password: ""
     })
-    const [Success,setSuccess] = useState(false);
 
     const actions = (type:string) => {
         if (type === "login") {

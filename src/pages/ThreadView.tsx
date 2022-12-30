@@ -9,7 +9,7 @@ import { useAppState } from '../AppState';
 const API_URL = "http://localhost:3000/posts"
 
 const Threads = () => {
-    const {state,dispatch} = useAppState()
+    const {state} = useAppState()
     const [posts,setposts] = useState([]);
     useEffect(()=> {
         let mounted = true;
@@ -18,11 +18,19 @@ const Threads = () => {
                 "authorization": "bearer " + state.token
             }
         }).then(
-            (resp) => { if (resp.data) {
+            (resp) => { 
+                if (resp.data) {
                     console.log(resp.data) // comment out once done
                     setposts(resp.data)
-                } else {
-                    alert("need to login") //maybe use a setSuccess page
+                }
+            }
+        ).catch(
+            (err) => {
+                if (err.response.data.message === "Please log in") {
+                    console.log( "redirect to log in") //make a redirect to login page
+                }
+                else {
+                    console.log(err)
                 }
             }
         )

@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useNavigate} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
@@ -52,11 +52,18 @@ const PostView = () => {
                     category:resp.data.category,
                     body:resp.data.body
                 })
-            } else {
-                alert("need to login") //maybe create a error page
             }
         }
-    )
+    ).catch(
+        (err) => {
+            if (err.response.data.message === "Please log in") {
+                console.log( "redirect to log in") //make a redirect to login page
+            }
+            else {
+                console.log(err)
+        }
+    }
+)
 
     const handleEdit = () => {
         setEditPost(true)
@@ -77,9 +84,9 @@ const PostView = () => {
             )
         goThreads()
     }
-    const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
-        axios.put(API_URL, {
+        await axios.put(API_URL, {
             "title":formData.title, 
             "category":formData.category,
             "body":formData.body,
@@ -96,7 +103,7 @@ const PostView = () => {
     }
 
     useEffect(()=> {
-        let mounted = true;
+        // let mounted = true;
         dispatch({type:"setpost", payload:{selected_post_id: post_id}})
         getPost()
     }, []);

@@ -18,7 +18,7 @@ const initialState = {
 ///////////////////
 // action = {type: "" ,payload: ...}
 
-const reducer = (state: any, action: {type:string, payload:any}) => {
+const reducer = (state: typeof initialState, action: {type:string, payload:any}) => {
     let newState;
     switch(action.type) {
         case "login":
@@ -44,9 +44,9 @@ type AppContextProviderProps = {
     children: React.ReactNode
 }
 type AppContextType = {
-    state: any
+    state: typeof initialState
     dispatch: React.Dispatch<{
-        type: any;
+        type: string;
         payload: any
     }>
 }
