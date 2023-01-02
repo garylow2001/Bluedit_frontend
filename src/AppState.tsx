@@ -9,7 +9,8 @@ const initialState = {
     token: null,
     username: null,
     user_id: null,
-    selected_post_id: null
+    selected_post_id: null,
+    selected_comment_id: null
 }
 
 
@@ -27,6 +28,11 @@ const reducer = (state: typeof initialState, action: {type:string, payload:any})
             return newState
             break
         case "setpost":
+            newState = {...state, ...action.payload}
+            console.log(newState) //comment out once done
+            return newState
+            break
+        case "setcomment":
             newState = {...state, ...action.payload}
             console.log(newState) //comment out once done
             return newState

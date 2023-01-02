@@ -19,16 +19,18 @@ const NewPost = () => {
         user_id:state.user_id,
         username:state.username,
     })
+    /////////////////////////// Handle Posts //////////////////////////////////
     const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.id]: e.target.value});
     }
-    const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
-        axios.post(API_URL, formData,{headers})
+        await axios.post(API_URL, formData,{headers})
             .then((resp)=> console.log(resp))
             .catch((err)=> console.log(err))
         goThreads()
     }
+    /////////////////////////////////////////////////////////////////////////////
     return (
         <form onSubmit={handleSubmit}>
             <h1> Add a new post</h1>

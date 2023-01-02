@@ -1,20 +1,17 @@
-import { Link, useLocation, useNavigate} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
 import CommentList from '../components/CommentList';
-// import CommentList from '../components/CommentList';
 
 
 const PostView = () => {
-    const location = useLocation()
-    const {post_id} = location.state
     const {state,dispatch} = useAppState()
     const navigate = useNavigate()
     const goThreads = () => {
         return navigate('/threads')
     }
-    const API_URL = "http://localhost:3000/posts/" + post_id
+    const API_URL = "http://localhost:3000/posts/" + state.selected_post_id
     const headers = {"authorization": "bearer " + state.token}
 
     const [post,setpost] = useState({
@@ -62,9 +59,8 @@ const PostView = () => {
             else {
                 console.log(err)
         }
-    }
-)
-
+    })
+    //////////////////////////////// Handle Post //////////////////////////////////
     const handleEdit = () => {
         setEditPost(true)
     }
@@ -101,16 +97,18 @@ const PostView = () => {
         )
         getPost()
     }
+    //////////////////////////////////////////////////////////////////////////
 
     useEffect(()=> {
         // let mounted = true;
-        dispatch({type:"setpost", payload:{selected_post_id: post_id}})
+        // dispatch({type:"setpost", payload:{selected_post_id: post_id}})
+        console.log(state)
         getPost()
     }, []);
     
     return (
         <div> 
-        <h1>Post {post_id}</h1>
+        <h1>Post {state.selected_post_id}</h1>
         {EditPost
             ?<form onSubmit={handleSubmit}>
                 <h2><input 
@@ -146,11 +144,11 @@ const PostView = () => {
                 <div>
                 {state.user_id === post.user_id
                     ? <>
-                    <button onClick={handleEdit}>edit</button>
-                    <button onClick={handleDelete}>delete</button>
+                    <button onClick={handleEdit}>Edit Post</button>
+                    <button onClick={handleDelete}>Delete Post</button>
                     </>
                     : ""}
-                <CommentList post_id={post_id}/>
+                <CommentList />
                 </div>
             </div>}
             <div>
