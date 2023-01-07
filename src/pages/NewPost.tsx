@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { useAppState } from "../AppState"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import DropDown from "../components/DropDown"
 
 const NewPost = () => {
     const {state,dispatch} = useAppState()
@@ -42,14 +43,7 @@ const NewPost = () => {
                     required
                 />
             </h2>
-            <h2>Category: <input 
-                    type="text"
-                    id="category"
-                    onChange={handleChange}
-                    value={formData.category}
-                    required
-                />
-            </h2>
+            <DropDown placeHolder="Select..."/>
             <h2>Body: <input 
                     type="text"
                     id="body"

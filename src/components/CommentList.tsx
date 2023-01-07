@@ -37,6 +37,8 @@ const CommentList= () => {
         }
         else {
             setIsClickedAdd(!isClickedAdd)
+            setIsClickedEdit(-1)
+            setFormData({...formData, ["body"]:""})
             setCommentAction("AddComment")
             console.log(CommentAction)
         }
