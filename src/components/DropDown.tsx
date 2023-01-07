@@ -1,6 +1,4 @@
 import React, {MouseEvent, useEffect, useState} from 'react';
-import { InterfaceType } from 'typescript';
-
 import "./DropDown.css";
 
 const Icon = () => {
@@ -16,7 +14,14 @@ interface OptionInterface {
     label:string
 }
 
-const DropDown = (props:{placeHolder:string}) => {
+export const options = [
+    {value: "news", label: "News"},
+    {value: "gaming", label: "Gaming"},
+    {value: "education", label: "Education"},
+    {value: "others", label: "Others"},
+]
+
+const DropDown = (props:{placeHolder:string, chooseCategory: Function}) => {
     const [ShowMenu,setShowMenu] = useState(false)
     const [selectedvalue,setSelectedvalue] = useState<OptionInterface|null>(null)
 
@@ -44,31 +49,12 @@ const DropDown = (props:{placeHolder:string}) => {
 
     const onItemClick = (option:OptionInterface) => {
         setSelectedvalue(option)
+        props.chooseCategory(option.value)
     }
-
-    const isSelected = (option:OptionInterface) => {
-        if (!selectedvalue) {
-            return false
-        }
-        else {
-            return selectedvalue.value === option.value
-        }
-    }
-
-    const inputRef = () => {
-
-    }
-
-    const options = [
-        {value: "news", label: "News"},
-        {value: "gaming", label: "Gaming"},
-        {value: "education", label: "Education"},
-        {value: "others", label: "Others"},
-    ]
 
     return (
         <div className="dropdown-container">
-            <div className="dropdown-input" onClick={handleInputClick} ref={inputRef}>
+            <div className="dropdown-input" onClick={handleInputClick}>
                 <div className='dropdown-selected-value'>{getDisplay()}</div>
                 <div className='dropdown-tools'>
                     <div className='dropdown-tool'>

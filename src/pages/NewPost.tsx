@@ -20,6 +20,11 @@ const NewPost = () => {
         user_id:state.user_id,
         username:state.username,
     })
+    ////////////////////////// For Category Dropdown///////////////////////////
+    const chooseCategory = (cat:string) => {
+        setFormData({...formData,["category"]: cat})
+    }
+    ///////////////////////////////////////////////////////////////////////////
     /////////////////////////// Handle Posts //////////////////////////////////
     const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.id]: e.target.value});
@@ -43,7 +48,7 @@ const NewPost = () => {
                     required
                 />
             </h2>
-            <DropDown placeHolder="Select..."/>
+            <DropDown placeHolder="Select..." chooseCategory={chooseCategory}/>
             <h2>Body: <input 
                     type="text"
                     id="body"
