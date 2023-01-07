@@ -7,9 +7,9 @@ const CommentList= () => {
     const headers = {"authorization": "bearer " + state.token}
     const API_URL = state.url + "/posts/"+ state.selected_post_id +"/comments"
     const [comments,setComments] = useState([])
+    const [SelectedCommentID, setSelectedCommentID] = useState(-1)
     const [CommentAction,setCommentAction] = useState("")
     const [isClickedAdd,setIsClickedAdd] = useState(false)
-    const [isClickedEdit,setIsClickedEdit] = useState(-1)
     const [formData,setFormData] = useState({
         body: "",
         post_id: state.selected_post_id,
@@ -30,14 +30,14 @@ const CommentList= () => {
     }, []);
     
     ////////////////////////// HANDLE COMMENT //////////////////////////////////
-    const handleAddClick = () => {
+    const handleAddClick = async () => {
         if (isClickedAdd) {
             setFormData({...formData, ["body"]:""})
-            setIsClickedAdd(!isClickedAdd)
+            setIsClickedAdd(false)
         }
         else {
-            setIsClickedAdd(!isClickedAdd)
-            setIsClickedEdit(-1)
+            setIsClickedAdd(true)
+            setSelectedCommentID(-1)
             setFormData({...formData, ["body"]:""})
             setCommentAction("AddComment")
             console.log(CommentAction)
@@ -48,12 +48,12 @@ const CommentList= () => {
         setFormData({...formData, [e.target.id]: e.target.value});
     }
 
-    const handleEdit = (id:number,body:string) => {
+    const handleEdit = async (id:number,body:string) => {
         setCommentAction("EditComment")
         console.log(CommentAction)
         dispatch({type:"setcomment",payload:{selected_comment_id:id}})
         setIsClickedAdd(false)
-        setIsClickedEdit(id)
+        setSelectedCommentID(id)
         setFormData({...formData, ["body"]:body})
     }
 
@@ -67,18 +67,12 @@ const CommentList= () => {
             .catch((err)=> console.log(err))
         }
         if (type === "EditComment") {
-            const PUT_API_URL = API_URL + "/" + state.selected_comment_id
+            const PUT_API_URL = API_URL + "/" + SelectedCommentID 
             return axios.put(PUT_API_URL, formData, {headers})
             .then((resp) => {
                 console.log(resp)
-                setIsClickedEdit(-1)
+                setSelectedCommentID(-1)
             })
-            .catch((err) => console.log(err))
-        }
-        if (type === "DeleteComment") {
-            const DELETE_API_URL = API_URL + "/" + state.selected_comment_id
-            return axios.delete(DELETE_API_URL,{headers})
-            .then((resp) => console.log(resp))
             .catch((err) => console.log(err))
         }
     }
@@ -90,18 +84,22 @@ const CommentList= () => {
         getComments()
     }
     
-    const handleDelete = async (id:number) => {
-        dispatch({type:"setcomment",payload:{selected_comment_id:id}})
-        setCommentAction("DeleteComment")
-        await Actions(CommentAction)
-        getComments()
+    const handleDelete = (id:number) => {
+        dispatch({type:"setcomment",payload:{selected_comment_id:id}}) //not needed
+        const DELETE_API_URL = API_URL + "/" + id
+        axios.delete(DELETE_API_URL,{headers})
+        .then((resp) => {
+            console.log(resp)
+            getComments()
+        })
+        .catch((err) => console.log(err))
     }
     /////////////////////////////////////////////////////////////////////////////////
 
     return <div>
         {comments.map((comment:any) =>
                 <div key={comment.id}>
-                    {(isClickedEdit=== comment.id)?
+                    {(SelectedCommentID === comment.id)?
                     <form onSubmit={handleSubmit}>
                         <p> Edit your comment:
                         <input 
@@ -113,7 +111,7 @@ const CommentList= () => {
                             />
                     </p>
                     <button>Edit comment</button>
-                    <button onClick={()=>setIsClickedEdit(-1)}>Cancel</button>
+                    <button onClick={()=>setSelectedCommentID(-1)}>Cancel</button>
                 </form>
                 :
                 <div>
