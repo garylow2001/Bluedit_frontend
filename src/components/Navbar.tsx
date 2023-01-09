@@ -2,10 +2,11 @@ import { useState } from "react"
 import { options } from "./DropDown"
 import "./Navbar.css"
 
-export const Navbar = () => {
+export const Navbar = (props:{handleChangeCategory: Function}) => {
     const [CategoryView, setCategoryView] = useState("all")
     const handleClick = (cat:string) => {
         setCategoryView(cat)
+        props.handleChangeCategory(cat)
     }
 
     return <nav className="nav">
@@ -16,7 +17,7 @@ export const Navbar = () => {
             </li>
             {options.map((option)=>
             <li>
-                <div onClick={()=> handleClick(option.value)}>{option.label}</div>
+                <div key={option.value} onClick={()=> handleClick(option.value)}>{option.label}</div>
             </li>
             )}
         </ul>
