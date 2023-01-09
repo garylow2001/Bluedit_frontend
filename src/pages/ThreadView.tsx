@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
 import { useAppState } from '../AppState';
+import { Navbar } from '../components/Navbar';
 
 
 
@@ -39,8 +40,9 @@ const Threads = () => {
     
     return (
         <>
-        <h1>Threads</h1>
-            <Link to= "/post/new">Add a new post!</Link>
+        <Navbar/>
+        <h1>Let's see whats cooking today!</h1>
+            <Link to= "/post/new">Click here to start a new thread!</Link>
             <Posts posts={posts} />
             <Link to="/">Logout</Link>
         </>
