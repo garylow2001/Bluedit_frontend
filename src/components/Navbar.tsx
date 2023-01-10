@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { options } from "./DropDown"
-import "./Navbar.css"
 
 export const Navbar = (props:{handleChangeCategory: Function}) => {
     const [CategoryView, setCategoryView] = useState("all")

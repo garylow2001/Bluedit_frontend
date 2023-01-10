@@ -4,7 +4,6 @@ import axios from 'axios';
 import Posts from '../components/ThreadList';
 import { useAppState } from '../AppState';
 import { Navbar } from '../components/Navbar';
-import "./Threadlist.css"
 
 
 const API_URL = "http://localhost:3000/posts"
@@ -57,15 +56,15 @@ const Threads = () => {
     }, []);
     
     return (
-        <>
-        <Navbar handleChangeCategory={handleChangeCategory}/>
-        <div className='ThreadList'>
-        <h1>Let's see whats cooking today!</h1>
-            <Link to= "/post/new">Click here to start a new thread!</Link>
-            <Posts posts={posts} />
-            <Link to="/">Logout</Link>
+        <div>
+            <Navbar handleChangeCategory={handleChangeCategory}/>
+            <div className='ThreadList'>
+                <h1>Let's see whats cooking today!</h1>
+                <Link to= "/post/new">Click here to start a new thread!</Link>
+                <Posts posts={posts} />
+                <Link to="/">Logout</Link>
+            </div>
         </div>
-        </>
     )
 }
 export default Threads;
