@@ -56,10 +56,10 @@ const Threads = () => {
     }, []);
     
     return (
-        <div>
-            <Navbar handleChangeCategory={handleChangeCategory}/>
-            <div className='ThreadList'>
-                <h1>Let's see whats cooking today!</h1>
+        <div className='height-100% top-0 w-screen'>
+            <Navbar handleChangeCategory={handleChangeCategory} />
+            <div className='position-relative height-100%'>
+                <h1 className='position-relative mt-20'>Let's see whats cooking today!</h1>
                 <Link to= "/post/new">Click here to start a new thread!</Link>
                 <Posts posts={posts} />
                 <Link to="/">Logout</Link>

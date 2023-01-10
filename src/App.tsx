@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import Auth from './pages/Auth';
 import Threads from './pages/ThreadView';
 import Posts from './pages/PostView';
@@ -11,7 +11,7 @@ import NewPost from './pages/NewPost';
 const App = () => {
   return (
     <AppState>
-      <main className="App">
+      <main className="App w-screen bg-teal-700 text-center flex bg-contain text-white min-h-screen text-xl">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Auth/>} />
