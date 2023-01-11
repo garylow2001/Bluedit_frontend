@@ -8,12 +8,12 @@ const capitalizeName = (name:string) => {
 }
 const Posts = (props:any) => {
     const {dispatch} = useAppState()
-    return <div className=''>
+    return <div className='space-y-4 mb-4 w-full'>
         {props.posts.map((post:any)=> {
-            return <div key={post.id} className='border rounded-md px-4 py-4 w-1/2 center'>
-                <h2>{post.title} </h2>
+            return <div key={post.id} className='box w-1/2 m-auto border-4 shadow-md shadow-black rounded-lg px-4 py-4 bg-teal-500'>
+                <h2 className=''>{post.title} </h2>
                 <p>Category: {capitalizeName(post.category)}   Created by: {post.username}</p>
-                <p>{post.body}</p>
+                <p className=''>{post.body}</p>
                 <Link 
                     to={"/post/"+post.id} 
                     onClick={

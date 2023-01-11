@@ -56,13 +56,13 @@ const Threads = () => {
     }, []);
     
     return (
-        <div className='height-100% top-0 w-screen'>
+        <div className='justify-center w-full align-top min-h-screen max-h-full'>
             <Navbar handleChangeCategory={handleChangeCategory} />
-            <div className='position-relative height-100%'>
-                <h1 className='position-relative mt-20'>Let's see whats cooking today!</h1>
-                <Link to= "/post/new">Click here to start a new thread!</Link>
+            <div className='height-100% justify-self-center align-top'>
+                <h1 className='relative mt-20 align-top'>Let's see whats cooking today!</h1>
+                <Link to= "/post/new" className=''>Click here to start a new thread!</Link>
                 <Posts posts={posts} />
-                <Link to="/">Logout</Link>
+                {/* <Link to="/">Logout</Link> */}
             </div>
         </div>
     )

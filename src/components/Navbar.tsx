@@ -8,7 +8,7 @@ export const Navbar = (props:{handleChangeCategory: Function}) => {
         props.handleChangeCategory(cat)
     }
 
-    return <nav className="absolute w-screen top-0 left-0 bg-black border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+    return <nav className="absolute w-full top-0 left-0 bg-black border-gray-200 px-2 py-2.5 dark:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
             <h2 className="text-white text-4xl font-medium"> Threads</h2>
             <ul className="flex items-center">
