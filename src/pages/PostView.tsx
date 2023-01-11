@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
 import CommentList from '../components/CommentList';
+// import { Navbar } from '../components/Navbar';
 
 
 const PostView = () => {
@@ -108,6 +109,7 @@ const PostView = () => {
     
     return (
         <div className='space-y-4 mb-5 w-full my-5'> 
+        {/* <Navbar/> */}
         <h1>Post {state.selected_post_id}</h1>
         {EditPost
             ?<form onSubmit={handleSubmit}>
@@ -137,8 +139,8 @@ const PostView = () => {
                 <button onClick={handleCancel}>Cancel</button>
                 </>
             </form>
-            :<div>
-                <div className='box w-1/2 my-5 mx-auto border-4 border-cyan-200 shadow-md shadow-black rounded-lg px-4 py-4 bg-teal-500
+            :<div className=''>
+                <div className='box w-1/2 my-5 mx-auto border-4 border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
                 hover:shadow-white hover:shadow-lg'>
                     <h2 className='font-medium text-3xl'>{post.title} </h2>
                     <div className='flex justify-between px-5 py-2'>
@@ -157,10 +159,11 @@ const PostView = () => {
                     <CommentList />
                 </div>
             </div>}
-            <div>
-                <Link to="/threads">Back to threads</Link>
+            <div className='py-5'>
+                <Link to="/threads" className='my-auto px-1 py-2 font-medium  text-3xl underline'>Back to threads</Link>
             </div>
-            <Link to="/">Logout</Link>
+            <Link to="/" className='px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+                    hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link>
             </div>
     )
 }

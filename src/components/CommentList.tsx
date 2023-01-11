@@ -96,23 +96,54 @@ const CommentList= () => {
     }
     /////////////////////////////////////////////////////////////////////////////////
 
-    return <div>
-        {comments.map((comment:any) =>
-                <div key={comment.id} className='box w-1/2 my-5 mx-auto border-4 border-cyan-200 shadow-md shadow-black rounded-lg px-4 py-4 bg-teal-500
-                hover:shadow-white hover:shadow-lg'>
-                    {(SelectedCommentID === comment.id)?
-                    <form onSubmit={handleSubmit}>
-                        <p> Edit your comment:
+    return <div className='space-y-5'>
+        {(isClickedAdd)
+            ?<div className='box w-1/2 my-5 mx-auto border-4
+            border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
+            hover:shadow-white hover:shadow-lg'>
+                <form onSubmit={handleSubmit}>
+                    <p className='font-medium text-2xl'> Add some spice: 
                         <input 
                                 type="text"
                                 id="body"
                                 onChange={handleChange}
                                 value={formData.body}
                                 required
+                                className="block w-1/2 m-auto appearance-none rounded-md border border-gray-300 
+                            px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
+                            focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                             />
                     </p>
-                    <button>Edit comment</button>
-                    <button onClick={()=>setSelectedCommentID(-1)}>Cancel</button>
+                    <div className='relative space-x-5 justify-center'>
+                        <button className='underline font-medium text-xl'>Add comment</button>
+                        <button onClick={handleAddClick} className='underline font-medium text-xl'>Cancel</button>
+                    </div>
+                </form>
+            </div>
+            :<button onClick={handleAddClick} className='my-auto px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+            hover:bg-grey hover:shadow-lg hover:shadow-white'>Add comment</button>
+        }
+        {comments.map((comment:any) =>
+                <div key={comment.id} className='box w-1/2 my-5 mx-auto border-4
+                border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
+                hover:shadow-white hover:shadow-lg'>
+                    {(SelectedCommentID === comment.id)?
+                    <form onSubmit={handleSubmit}>
+                        <p className='font-medium text-2xl'>  Edit your comment:</p>
+                        <input 
+                                type="text"
+                                id="body"
+                                onChange={handleChange}
+                                value={formData.body}
+                                required
+                                className="block w-1/2 m-auto appearance-none rounded-md border border-gray-300 
+                                px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
+                                focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
+                            />
+                    <div className='relative space-x-5 justify-center'>
+                        <button className='underline font-medium text-xl'>Edit comment</button>
+                        <button onClick={()=>setSelectedCommentID(-1)} className='underline font-medium text-xl'>Cancel</button>
+                    </div>
                 </form>
                 :
                 <div>
@@ -128,24 +159,6 @@ const CommentList= () => {
                 </div>}
                 </div>)
             }
-        {(isClickedAdd)
-            ?<div>
-                <form onSubmit={handleSubmit}>
-                    <p> Add some spice: 
-                        <input 
-                                type="text"
-                                id="body"
-                                onChange={handleChange}
-                                value={formData.body}
-                                required
-                            />
-                    </p>
-                    <button>Add comment</button>
-                    <button onClick={handleAddClick}>Cancel</button>
-                </form>
-            </div>
-            :<button onClick={handleAddClick}>Add comment</button>
-        }
     </div>
     }
 export default CommentList;

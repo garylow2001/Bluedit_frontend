@@ -38,28 +38,37 @@ const NewPost = () => {
     }
     /////////////////////////////////////////////////////////////////////////////
     return (
-        <form onSubmit={handleSubmit}>
-            <h1> Add a new post</h1>
-            <h2>Title: <input 
+        <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2">
+            <h1 className="mb-5 text-3xl font-medium"> Add a new post</h1>
+            <h2 className="text-2xl font-medium">Title: <input 
                     type="text"
                     id="title"
                     onChange={handleChange}
                     value={formData.title}
                     required
+                    className="block w-full h-full appearance-none rounded-md border border-gray-300 
+                            px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
+                            focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 />
             </h2>
+            <h2 className="text-2xl font-medium"> Category:</h2>
             <DropDown placeHolder="Select..." chooseCategory={chooseCategory}/>
-            <h2>Body: <input 
+            <h2 className="text-2xl font-medium"> Body: 
+            <input 
                     type="text"
                     id="body"
                     onChange={handleChange}
                     value={formData.body}
                     required
+                    className="block w-full h-full appearance-none rounded-md border border-gray-300 
+                            px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
+                            focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 />
             </h2>
-            <button>Add post</button>
-            <div>
-                <Link to="/threads">Back to Threads</Link>
+            <button className='my-2 px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+                    hover:bg-grey hover:shadow-lg hover:shadow-white w-64'>Add post</button>
+            <div className="my-2 w-full">
+                <Link to="/threads" className='my-auto px-1 py-2 font-medium  text-3xl underline'>Back to Threads</Link>
             </div>
         </form>
     )

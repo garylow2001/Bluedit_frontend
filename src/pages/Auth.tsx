@@ -79,7 +79,7 @@ const Auth = () => {
     }
     return (
         <div className="w-screen max-w-md">
-            <h1 className="mt-6 text-center text-4xl font-bold tracking-tight white"> Welcome to BlueDit</h1>
+            <h1 className="mt-6 text-center text-4xl font-bold tracking-tight white"> Welcome to CornHub</h1>
             <h1 className="mt-2 text-center text-3xl white"> {(AuthType==="login")?"Sign In":"Sign Up"}</h1>
             <form className="space-y-0.25 mt-8"onSubmit={handleSubmit}>
                 <div className="-space-y-px rounded-md shadow-sm">
@@ -93,8 +93,8 @@ const Auth = () => {
                     required
                     placeholder="Username..."
                     className="relative block w-full appearance-none rounded-md border border-gray-300 
-                    px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 
-                    focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-indigo-500 
+                    focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 />
                 </div>
                 <div className="-space-y-px rounded-md shadow-sm">
@@ -107,21 +107,21 @@ const Auth = () => {
                     required
                     placeholder="Password..."
                     className="relative block w-full appearance-none rounded-md border border-gray-300 
-                    px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 
-                    focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-indigo-500 
+                    focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 />
                 </div>
                 <div className="">
-                    <button className="mt-8 relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 
-                    text-sm font-medium text-white hover:bg-indigo-700 
+                    <button className="mt-8 relative flex w-full justify-center rounded-md border border-transparent py-2 px-4 
+                    text-sm font-medium text-white hover:bg-indigo-600 bg-indigo-700
                     focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         {(AuthType==="login")?"Sign In":"Sign Up"}
                     </button>
                 </div>
             </form>
             <button onClick={changeAuthType} className="group relative flex w-full justify-center rounded-md 
-                 bg-slate-600 py-2 px-4 
-                text-sm font-medium text-white hover:bg-slate-700 ">
+                 bg-black py-2 px-4 
+                text-sm font-medium text-white hover:bg-darkgrey ">
                     Or Click Here To {(AuthType==="login")?"Sign Up":"Sign In"}
                     </button>
         </div>
