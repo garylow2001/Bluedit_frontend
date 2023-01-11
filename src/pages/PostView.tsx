@@ -107,7 +107,7 @@ const PostView = () => {
     }, []);
     
     return (
-        <div> 
+        <div className='space-y-4 mb-5 w-full my-5'> 
         <h1>Post {state.selected_post_id}</h1>
         {EditPost
             ?<form onSubmit={handleSubmit}>
@@ -138,17 +138,23 @@ const PostView = () => {
                 </>
             </form>
             :<div>
-                <h2>{post.title} </h2>
-                <p>Category: {post.category}   Created by: {post.username}</p>
-                <p>{post.body}</p>
+                <div className='box w-1/2 my-5 mx-auto border-4 border-cyan-200 shadow-md shadow-black rounded-lg px-4 py-4 bg-teal-500
+                hover:shadow-white hover:shadow-lg'>
+                    <h2 className='font-medium text-3xl'>{post.title} </h2>
+                    <div className='flex justify-between px-5 py-2'>
+                        <p className='text-2xl font-medium'> Category: {post.category}</p>
+                        <p className='text-2xl font-medium'> Created by: {post.username}</p>
+                    </div>
+                    <p className='px-4 py-2 font-medium'>{post.body}</p>
+                </div>
                 <div>
-                {state.user_id === post.user_id
-                    ? <>
-                    <button onClick={handleEdit}>Edit Post</button>
-                    <button onClick={handleDelete}>Delete Post</button>
-                    </>
-                    : ""}
-                <CommentList />
+                    {state.user_id === post.user_id
+                        ? <>
+                        <button onClick={handleEdit}>Edit Post</button>
+                        <button onClick={handleDelete}>Delete Post</button>
+                        </>
+                        : ""}
+                    <CommentList />
                 </div>
             </div>}
             <div>

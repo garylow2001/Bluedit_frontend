@@ -98,7 +98,8 @@ const CommentList= () => {
 
     return <div>
         {comments.map((comment:any) =>
-                <div key={comment.id}>
+                <div key={comment.id} className='box w-1/2 my-5 mx-auto border-4 border-cyan-200 shadow-md shadow-black rounded-lg px-4 py-4 bg-teal-500
+                hover:shadow-white hover:shadow-lg'>
                     {(SelectedCommentID === comment.id)?
                     <form onSubmit={handleSubmit}>
                         <p> Edit your comment:
@@ -115,12 +116,12 @@ const CommentList= () => {
                 </form>
                 :
                 <div>
-                     <p>{comment.body}</p>
-                    <p>comment by: {comment.username}</p>
+                    <p className='font-medium text-2xl'>{comment.body}</p>
+                    <p className='font-medium text-xl'>comment by: {comment.username}</p>
                     {comment.user_id===state.user_id
-                        ?<div>
-                            <button onClick={() => handleEdit(comment.id,comment.body)}>Edit Comment</button>
-                            <button onClick={() => handleDelete(comment.id)}>Delete Comment</button>
+                        ?<div className=' flex space-x-5 justify-center'>
+                            <button className='underline font-medium text-xl' onClick={() => handleEdit(comment.id,comment.body)}>Edit Comment</button>
+                            <button className='underline font-medium text-xl' onClick={() => handleDelete(comment.id)}>Delete Comment</button>
                         </div>
                         :""
                         }
