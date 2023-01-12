@@ -102,7 +102,7 @@ const CommentList= () => {
             border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
             hover:shadow-white hover:shadow-lg'>
                 <form onSubmit={handleSubmit}>
-                    <p className='font-medium text-2xl'> Add some spice: 
+                    <p className='font-coolvetica text-2xl'> Add some spice: 
                         <input 
                                 type="text"
                                 id="body"
@@ -115,12 +115,12 @@ const CommentList= () => {
                             />
                     </p>
                     <div className='relative space-x-5 justify-center'>
-                        <button className='underline font-medium text-xl'>Add comment</button>
-                        <button onClick={handleAddClick} className='underline font-medium text-xl'>Cancel</button>
+                        <button className='underline font-coolvetica text-xl'>Add comment</button>
+                        <button onClick={handleAddClick} className='underline font-coolvetica text-xl'>Cancel</button>
                     </div>
                 </form>
             </div>
-            :<button onClick={handleAddClick} className='my-auto px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+            :<button onClick={handleAddClick} className='my-auto px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
             hover:bg-grey hover:shadow-lg hover:shadow-white'>Add comment</button>
         }
         {comments.map((comment:any) =>
@@ -129,7 +129,7 @@ const CommentList= () => {
                 hover:shadow-white hover:shadow-lg'>
                     {(SelectedCommentID === comment.id)?
                     <form onSubmit={handleSubmit}>
-                        <p className='font-medium text-2xl'>  Edit your comment:</p>
+                        <p className='font-coolvetica text-2xl'>  Edit your comment:</p>
                         <input 
                                 type="text"
                                 id="body"
@@ -141,18 +141,18 @@ const CommentList= () => {
                                 focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                             />
                     <div className='relative space-x-5 justify-center'>
-                        <button className='underline font-medium text-xl'>Edit comment</button>
-                        <button onClick={()=>setSelectedCommentID(-1)} className='underline font-medium text-xl'>Cancel</button>
+                        <button className='underline font-coolvetica text-xl'>Edit comment</button>
+                        <button onClick={()=>setSelectedCommentID(-1)} className='underline font-coolvetica text-xl'>Cancel</button>
                     </div>
                 </form>
                 :
                 <div>
-                    <p className='font-medium text-2xl'>{comment.body}</p>
-                    <p className='font-medium text-xl'>comment by: {comment.username}</p>
+                    <p className='font-coolvetica text-2xl'>{comment.body}</p>
+                    <p className='font-coolvetica text-xl'>comment by: {comment.username}</p>
                     {comment.user_id===state.user_id
                         ?<div className=' flex space-x-5 justify-center'>
-                            <button className='mx-4 underline font-medium text-xl' onClick={() => handleEdit(comment.id,comment.body)}>Edit Comment</button>
-                            <button className='mx-4 underline font-medium text-xl' onClick={() => handleDelete(comment.id)}>Delete Comment</button>
+                            <button className='mx-4 underline font-coolvetica text-xl' onClick={() => handleEdit(comment.id,comment.body)}>Edit Comment</button>
+                            <button className='mx-4 underline font-coolvetica text-xl' onClick={() => handleDelete(comment.id)}>Delete Comment</button>
                         </div>
                         :""
                         }

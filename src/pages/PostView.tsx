@@ -121,7 +121,7 @@ const PostView = () => {
         <h1>Post {state.selected_post_id}</h1>
         {EditPost
             ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-2 rounded-md px-5 py-5 bg-golden-yellow">
-                <h2 className='px-4 py-2 font-medium'>Title: <input 
+                <h2 className='px-4 py-2 font-coolvetica'>Title: <input 
                     type="text"
                     id="title"
                     onChange={handleChange}
@@ -131,7 +131,7 @@ const PostView = () => {
                     px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-indigo-500 
                     focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 /></h2>
-                <p className='px-4 py-2 font-medium relative'>Category: <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
+                <p className='px-4 py-2 font-coolvetica relative'>Category: <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
                 {/* <input 
                     type="text" //change to dropdown
                     id="category"
@@ -140,7 +140,7 @@ const PostView = () => {
                     required
                 />  */}
                 </p>
-                <p className='px-4 py-2 font-medium'>Body: <input 
+                <p className='px-4 py-2 font-coolvetica'>Body: <input 
                     type="text"
                     id="body"
                     onChange={handleChange}
@@ -151,23 +151,23 @@ const PostView = () => {
                     focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 /></p>
                 <div className='justify-center'>
-                    <button className='my-auto mx-5 px-1 py-2 font-medium  text-2xl underline'>Change</button>
-                    <button onClick={handleCancel} className='my-auto mx-5 px-1 py-2 font-medium  text-2xl underline'>Cancel</button>
+                    <button className='my-auto mx-5 px-1 py-2 font-coolvetica  text-2xl underline'>Change</button>
+                    <button onClick={handleCancel} className='my-auto mx-5 px-1 py-2 font-coolvetica  text-2xl underline'>Cancel</button>
                 </div>
             </form>
             :<div className=''>
                 <div className='box w-1/2 my-5 mx-auto border-4 border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
                 hover:shadow-white hover:shadow-lg'>
-                    <h2 className='font-medium text-3xl'>{post.title} </h2>
+                    <h2 className='font-coolvetica text-3xl'>{post.title} </h2>
                     <div className='flex justify-between px-5 py-2'>
-                        <p className='text-2xl font-medium'> Category: {post.category? capitalizeName(post.category): post.category}</p>
-                        <p className='text-2xl font-medium'> Created by: {post.username}</p>
+                        <p className='text-2xl font-coolvetica'> Category: {post.category? capitalizeName(post.category): post.category}</p>
+                        <p className='text-2xl font-coolvetica'> Created by: {post.username}</p>
                     </div>
-                    <p className='px-4 py-2 font-medium'>{post.body}</p>
+                    <p className='px-4 py-2 font-coolvetica'>{post.body}</p>
                     {state.user_id === post.user_id
                         ? <>
-                        <button onClick={handleEdit} className='my-auto mx-4 px-1 py-2 font-medium  text-2xl underline'>Edit Post</button>
-                        <button onClick={handleDelete} className='my-auto mx-4 px-1 py-2 font-medium  text-2xl underline'>Delete Post</button>
+                        <button onClick={handleEdit} className='my-auto mx-4 px-1 py-2 font-coolvetica  text-2xl underline'>Edit Post</button>
+                        <button onClick={handleDelete} className='my-auto mx-4 px-1 py-2 font-coolvetica  text-2xl underline'>Delete Post</button>
                         </>
                         : ""}
                 </div>
@@ -176,9 +176,9 @@ const PostView = () => {
                 </div>
             </div>}
             <div className='py-5'>
-                <Link to="/threads" className='my-auto px-1 py-2 font-medium  text-3xl underline'>Back to threads</Link>
+                <Link to="/threads" className='my-auto px-1 py-2 font-coolvetica  text-3xl underline'>Back to threads</Link>
             </div>
-            <Link to="/" className='px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+            <Link to="/" className='px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
                     hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link>
             </div>
     )

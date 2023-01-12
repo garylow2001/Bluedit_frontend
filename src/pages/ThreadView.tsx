@@ -59,9 +59,9 @@ const Threads = () => {
         <div className='justify-center w-full align-top min-h-screen max-h-full'>
             <Navbar handleChangeCategory={handleChangeCategory} />
             <div className='height-100% justify-self-center align-top'>
-                <h1 className='relative mt-20 align-top font-medium text-4xl px-2 py-2 mb-5'>Let's see whats cooking today!</h1>
+                <h1 className='relative mt-20 align-top font-coolvetica text-4xl px-2 py-2 mb-5'>Let's see whats cooking today!</h1>
                 <Link to= "/post/new" 
-                    className='my-5 px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
+                    className='my-5 px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
                     hover:bg-grey hover:shadow-lg hover:shadow-white'>Click here to start a new thread!</Link>
                 <Posts posts={posts} />
                 {/* <Link to="/">Logout</Link> */}

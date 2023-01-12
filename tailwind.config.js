@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -15,6 +16,9 @@ module.exports = {
         'darkbrown': '#402401',
         'golden-yellow': '#FFC000',
       },
+      fontFamily: {
+        coolvetica: ["coolvetica"]
+      }
     },
   },
   plugins: [],
