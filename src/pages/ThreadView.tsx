@@ -57,7 +57,7 @@ const Threads = () => {
     
     return (
         <div className='justify-center w-full align-top min-h-screen max-h-full'>
-            <Navbar handleChangeCategory={handleChangeCategory} />
+            <Navbar handleChangeCategory={handleChangeCategory} page="Threads"/>
             <div className='height-100% justify-self-center align-top'>
                 <h1 className='relative mt-20 align-top font-coolvetica text-4xl px-2 py-2 mb-5'>Let's see whats cooking today!</h1>
                 <Link to= "/post/new" 

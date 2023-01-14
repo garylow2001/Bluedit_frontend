@@ -38,7 +38,7 @@ const NewPost = () => {
     }
     /////////////////////////////////////////////////////////////////////////////
     return (
-        <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-2 rounded-md px-5 py-5 bg-golden-yellow">
+        <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-2 border-brown rounded-md px-5 py-5 bg-golden-yellow">
             <h1 className="mb-5 text-3xl font-medium"> Add a new post</h1>
             <h2 className="text-2xl font-medium">Title: <input 
                     type="text"

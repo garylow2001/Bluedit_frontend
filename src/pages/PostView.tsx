@@ -4,7 +4,7 @@ import { useAppState } from '../AppState';
 import axios from 'axios';
 import CommentList from '../components/CommentList';
 import DropDown from '../components/DropDown';
-// import { Navbar } from '../components/Navbar';
+import { Navbar } from '../components/Navbar';
 
 
 const PostView = () => {
@@ -117,7 +117,7 @@ const PostView = () => {
     
     return (
         <div className='space-y-4 mb-5 w-full my-5'> 
-        {/* <Navbar/> */}
+        <Navbar page="post"/>
         <h1>Post {state.selected_post_id}</h1>
         {EditPost
             ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-2 rounded-md px-5 py-5 bg-golden-yellow">

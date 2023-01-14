@@ -12,22 +12,17 @@ const Posts = (props:any) => {
         {props.posts.map((post:any)=> {
             return <div key={post.id} className='box w-1/2 m-auto border-4 border-brown shadow-md
                     shadow-black rounded-lg px-4 py-4 bg-golden-yellow
-                    hover:shadow-black hover:shadow-lg hover:scale-105'>
-                <h2 className='text-3xl font-coolvetica'>{post.title} </h2>
-                <div className='flex justify-between px-5 py-2'>
-                    <p className='text-2xl font-coolvetica'>Category: {capitalizeName(post.category)}</p>
-                    <p className='text-2xl font-coolvetica'>Created by: {post.username}</p>
-                </div>
-                <p className='px-4 py-2 font-coolvetica'>{post.body}</p>
-                <Link 
-                    className='font-coolvetica border-2 rounded-md px-2 pb-2 bg-black
-                    hover:bg-grey text-white'
-                    to={"/post/"+post.id} 
-                    onClick={
-                        () => dispatch({type:"setpost",payload:{selected_post_id:post.id}})
-                        }>
-                        Go to post
-                </Link>
+                    hover:shadow-black hover:shadow-lg hover:scale-105 hover:cursor-pointer'>
+                        <Link to={"/post/"+post.id} onClick={
+                            () => dispatch({type:"setpost",payload:{selected_post_id:post.id}})
+                            }>
+                            <h2 className='text-3xl font-coolvetica'>{post.title} </h2>
+                            <div className='flex justify-between px-5 py-2'>
+                                <p className='text-2xl font-coolvetica'>Category: {capitalizeName(post.category)}</p>
+                                <p className='text-2xl font-coolvetica'>Created by: {post.username}</p>
+                            </div>
+                            <p className='px-4 py-2 font-coolvetica'>{post.body}</p>
+                    </Link>
                 </div>
             })
         }
