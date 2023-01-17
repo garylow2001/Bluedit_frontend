@@ -118,7 +118,7 @@ const PostView = () => {
     return (
         <div className='space-y-4 mb-5 w-full my-5'> 
         <Navbar page="post"/>
-        <h1>Post {state.selected_post_id}</h1>
+        {/* <h1>Post {state.selected_post_id}</h1> */}
         {EditPost
             ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-2 rounded-md px-5 py-5 bg-golden-yellow">
                 <h2 className='px-4 py-2 font-coolvetica'>Title: <input 
@@ -156,8 +156,7 @@ const PostView = () => {
                 </div>
             </form>
             :<div className=''>
-                <div className='box w-1/2 my-5 mx-auto border-4 border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow
-                hover:shadow-white hover:shadow-lg'>
+                <div className='box w-1/2 my-5 mx-auto border-4 border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow'>
                     <h2 className='font-coolvetica text-3xl'>{post.title} </h2>
                     <div className='flex justify-between px-5 py-2'>
                         <p className='text-2xl font-coolvetica'> Category: {post.category? capitalizeName(post.category): post.category}</p>

@@ -9,7 +9,12 @@ const capitalizeName = (name:string) => {
 const Posts = (props:any) => {
     const {dispatch} = useAppState()
     return <div className='space-y-4 mb-5 w-full my-5'>
-        {props.posts.map((post:any)=> {
+        {props.posts
+        .sort(function(a:any,b:any) {
+            a.updated_at.localeCompare(b.updated_at) 
+        })
+        .reverse()
+        .map((post:any)=> {
             return <div key={post.id} className='box w-1/2 m-auto border-4 border-brown shadow-md
                     shadow-black rounded-lg px-4 py-4 bg-golden-yellow
                     hover:shadow-black hover:shadow-lg hover:scale-105 hover:cursor-pointer'>
