@@ -38,7 +38,7 @@ const NewPost = () => {
     }
     /////////////////////////////////////////////////////////////////////////////
     return (
-        <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-2 border-brown rounded-md px-5 py-5 bg-golden-yellow">
+        <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-4 border-black rounded-md px-5 py-5 bg-orange">
             <h1 className="mb-5 text-3xl font-medium"> Add a new post</h1>
             <h2 className="text-2xl font-medium">Title: <input 
                     type="text"
@@ -65,8 +65,8 @@ const NewPost = () => {
                             focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 />
             </h2>
-            <button className='my-2 px-1 py-2 font-medium border-2 rounded-md bg-darkgrey text-white
-                    hover:bg-grey hover:shadow-lg hover:shadow-white w-64'>Add post</button>
+            <button className='my-2 py-2 font-medium border-2 border-black rounded-md bg-red-600 text-black
+                    hover:bg-red-400  w-64'>Add post</button>
             <div className="my-2 w-full">
                 <Link to="/threads" className='my-auto px-1 py-2 font-medium  text-3xl underline'>Back to Threads</Link>
             </div>

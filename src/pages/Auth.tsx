@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAppState } from "../AppState";
 
+
 const SIGN_IN_URL = "http://localhost:3000/login"
 const SIGN_UP_URL = "http://localhost:3000/users"
 
@@ -78,7 +79,7 @@ const Auth = () => {
         actions(AuthType)
     }
     return (
-        <div className="w-1/2 border-2 rounded-md px-5 py-5 bg-golden-yellow border-brown">
+        <div className="w-1/2 border-4 rounded-lg px-5 py-5 bg-orange border-black">
             <h1 className="mt-6 text-center text-4xl font-coolvetica tracking-tight white"> Welcome to ComHub</h1>
             <h1 className="mt-2 text-center text-3xl white font-coolvetica"> {(AuthType==="login")?"Sign In":"Sign Up"}</h1>
             <form className="space-y-0.25 mt-8"onSubmit={handleSubmit}>

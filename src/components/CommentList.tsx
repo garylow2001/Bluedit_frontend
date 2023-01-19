@@ -99,7 +99,7 @@ const CommentList= () => {
     return <div className='space-y-5'>
         {(isClickedAdd)
             ?<div className='box w-1/2 my-5 mx-auto border-4
-            border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow'>
+            border-black shadow-md shadow-black rounded-lg px-4 py-4 bg-orange'>
                 <form onSubmit={handleSubmit}>
                     <p className='font-coolvetica text-2xl'> Add some spice: 
                         <input 
@@ -119,14 +119,14 @@ const CommentList= () => {
                     </div>
                 </form>
             </div>
-            :<button onClick={handleAddClick} className='my-auto px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
-            hover:bg-grey hover:shadow-lg hover:shadow-white'>Add comment</button>
+            :<button onClick={handleAddClick} className='my-auto px-1 py-2 font-coolvetica border-2 border-black rounded-md bg-red-600 text-black
+            hover:bg-red-400'>Add comment</button>
         }
         {comments
         .sort((a:any,b:any) => (a.id > b.id) ? 1 : -1)
         .map((comment:any) =>
                 <div key={comment.id} className='box w-1/2 my-5 mx-auto border-4
-                border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow'>
+                border-black shadow-md shadow-black rounded-lg px-4 py-4 bg-orange'>
                     {(SelectedCommentID === comment.id)?
                     <form onSubmit={handleSubmit}>
                         <p className='font-coolvetica text-2xl'>  Edit your comment:</p>

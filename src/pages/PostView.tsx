@@ -120,7 +120,7 @@ const PostView = () => {
         <Navbar page="post"/>
         {/* <h1>Post {state.selected_post_id}</h1> */}
         {EditPost
-            ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-2 rounded-md px-5 py-5 bg-golden-yellow">
+            ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-4 border-black rounded-md px-5 py-5 bg-orange">
                 <h2 className='px-4 py-2 font-coolvetica'>Title: <input 
                     type="text"
                     id="title"
@@ -156,7 +156,7 @@ const PostView = () => {
                 </div>
             </form>
             :<div className=''>
-                <div className='box w-1/2 my-5 mx-auto border-4 border-brown shadow-md shadow-black rounded-lg px-4 py-4 bg-golden-yellow'>
+                <div className='box w-1/2 my-5 mx-auto border-4 border-black rounded-lg px-4 py-4 bg-orange'>
                     <h2 className='font-coolvetica text-3xl'>{post.title} </h2>
                     <div className='flex justify-between px-5 py-2'>
                         <p className='text-2xl font-coolvetica'> Category: {post.category? capitalizeName(post.category): post.category}</p>
@@ -177,8 +177,8 @@ const PostView = () => {
             <div className='py-5'>
                 <Link to="/threads" className='my-auto px-1 py-2 font-coolvetica  text-3xl underline'>Back to threads</Link>
             </div>
-            <Link to="/" className='px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
-                    hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link>
+            {/* <Link to="/" className='px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
+                    hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link> */}
             </div>
     )
 }

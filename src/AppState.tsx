@@ -1,14 +1,16 @@
 import React, { useContext, useReducer } from "react";
+import Cookies from "universal-cookie";
 
 ////////////////////
 // INITIAL STATE
 ////////////////////
+const cookies = new Cookies()
 
 const initialState = {
     url: "http://localhost:3000",
-    token: null,
-    username: null,
-    user_id: null,
+    token: cookies.get('jwt_authorization'),
+    username: cookies.get('username'),
+    user_id: cookies.get('user_id'),
     selected_post_id: null,
     selected_comment_id: null
 }
@@ -24,8 +26,14 @@ const reducer = (state: typeof initialState, action: {type:string, payload:any})
     switch(action.type) {
         case "login":
             newState = {...state, ...action.payload}
+            cookies.set("jwt_authorization",newState.token)
+            cookies.set("username",newState.username)
+            cookies.set("user_id",newState.user_id)
             console.log(newState) //comment out once done
             return newState
+            break
+        case "logout":
+            cookies.remove("jwt_authorization")
             break
         case "setpost":
             newState = {...state, ...action.payload}

@@ -15,8 +15,8 @@ const Posts = (props:any) => {
         })
         .reverse()
         .map((post:any)=> {
-            return <div key={post.id} className='box w-1/2 m-auto border-4 border-brown shadow-md
-                    shadow-black rounded-lg px-4 py-4 bg-golden-yellow
+            return <div key={post.id} className='box w-1/2 m-auto border-4 border-black shadow-md
+                    shadow-black rounded-lg px-4 py-4 bg-orange
                     hover:shadow-black hover:shadow-lg hover:scale-105 hover:cursor-pointer'>
                         <Link to={"/post/"+post.id} onClick={
                             () => dispatch({type:"setpost",payload:{selected_post_id:post.id}})

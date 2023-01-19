@@ -53,7 +53,7 @@ const DropDown = (props:{placeHolder:string, chooseCategory: Function}) => {
     }
 
     return (
-        <div className="dropdown-container w-1/2 m-auto">
+        <div className="dropdown-container w-1/2 m-auto font-medium text-black text-sm">
             <div className="dropdown-input" onClick={handleInputClick}>
                 <div className='dropdown-selected-value'>{getDisplay()}</div>
                 <div className='dropdown-tools'>

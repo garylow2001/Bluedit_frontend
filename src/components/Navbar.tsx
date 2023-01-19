@@ -1,6 +1,7 @@
 import { FC, FunctionComponent, useState } from "react"
 import { options } from "./DropDown"
 import { Link } from "react-router-dom"
+import { useAppState } from "../AppState"
 
 interface NavbarProps {
     handleChangeCategory?(cat:string) : void
@@ -9,9 +10,13 @@ interface NavbarProps {
 
 export const Navbar = (props:NavbarProps) => {
     const [CategoryView, setCategoryView] = useState("all")
+    const {dispatch} = useAppState()
     const handleClick = (cat:string) => {
         setCategoryView(cat)
         props.handleChangeCategory?.(cat)
+    }
+    const handleLogout = () => {
+        dispatch({type:"logout",payload:{}})
     }
 
     return <nav className="absolute w-full top-0 left-0 bg-black border-gray-200 px-2 py-2.5 dark:bg-gray-900">
@@ -38,7 +43,8 @@ export const Navbar = (props:NavbarProps) => {
             </ul>
             : ""
             }
-            <a href="/" className="text-white hover:bg-gray-700 hover:text-red-500 px-3 py-2 rounded-md text-2xl font-coolvetica hover:cursor-pointer">Logout</a>
+            <a href="/" className="text-white hover:bg-gray-700 hover:text-lred px-3 py-2 rounded-md text-2xl font-coolvetica hover:cursor-pointer"
+            onClick={handleLogout}>Logout</a>
         </div>
     </nav>
 }

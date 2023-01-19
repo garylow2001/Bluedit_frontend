@@ -7,14 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'orange': '#F28705',
-        'grey': '#808080',
-        'darkgrey': '#292929',
-        'lgrey': '#353535',
-        'darkorange': '#cc7000',
-        'brown': '#8C4E03',
-        'darkbrown': '#402401',
-        'golden-yellow': '#FFC000',
+        'orange': '	#efa332',
+        'grey': '#939394',
+        'cream': '#d4d0c4',
+        'lred': '#e6594a',
       },
       fontFamily: {
         coolvetica: ["coolvetica"]

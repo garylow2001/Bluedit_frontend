@@ -11,7 +11,7 @@ import NewPost from './pages/NewPost';
 const App = () => {
   return (
     <AppState>
-      <main className="App bg-orange text-center
+      <main className="App bg-cream text-center
        flex bg-contain text-black min-h-screen text-xl 
        justify-center items-center w-full h-full">
           <BrowserRouter>
