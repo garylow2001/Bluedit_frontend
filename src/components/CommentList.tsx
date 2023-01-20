@@ -149,7 +149,7 @@ const CommentList= () => {
                 <div>
                     <p className='font-coolvetica text-2xl'>{comment.body}</p>
                     <p className='font-coolvetica text-xl'>comment by: {comment.username}</p>
-                    {comment.user_id===state.user_id
+                    {parseInt(state.user_id) === comment.user_id
                         ?<div className=' flex space-x-5 justify-center'>
                             <button className='mx-4 underline font-coolvetica text-xl' onClick={() => handleEdit(comment.id,comment.body)}>Edit Comment</button>
                             <button className='mx-4 underline font-coolvetica text-xl' onClick={() => handleDelete(comment.id)}>Delete Comment</button>

@@ -13,7 +13,7 @@ const App = () => {
     <AppState>
       <main className="App bg-cream text-center
        flex bg-contain text-black min-h-screen text-xl 
-       justify-center items-center w-full h-full">
+       justify-center items-center w-full h-full align-top">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Auth/>} />

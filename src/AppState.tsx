@@ -11,8 +11,17 @@ const initialState = {
     token: cookies.get('jwt_authorization'),
     username: cookies.get('username'),
     user_id: cookies.get('user_id'),
-    selected_post_id: null,
+    selected_post_id: cookies.get('selected_post_id'),
     selected_comment_id: null
+}
+
+interface StateInterface {
+    url: string,
+    token: string,
+    username: string,
+    user_id: number,
+    selected_post_id: number,
+    selected_comment_id: number
 }
 
 
@@ -21,7 +30,7 @@ const initialState = {
 ///////////////////
 // action = {type: "" ,payload: ...}
 
-const reducer = (state: typeof initialState, action: {type:string, payload:any}) => {
+const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
     let newState;
     switch(action.type) {
         case "login":
@@ -37,6 +46,7 @@ const reducer = (state: typeof initialState, action: {type:string, payload:any})
             break
         case "setpost":
             newState = {...state, ...action.payload}
+            cookies.set("selected_post_id",newState.selected_post_id)
             console.log(newState) //comment out once done
             return newState
             break

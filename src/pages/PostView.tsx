@@ -21,7 +21,7 @@ const PostView = () => {
         title:null,
         category:null,
         body:null,
-        user_id:null
+        user_id: -1
     });
     
     const [EditPost,setEditPost] = useState(false)
@@ -43,7 +43,8 @@ const PostView = () => {
             "authorization": "bearer " + state.token
         }
     }).then(
-        (resp) => { if (resp.data) {
+        (resp) => { 
+            if (resp.data) {
                 setpost(resp.data)
                 setFormData({
                     title:resp.data.title,
@@ -116,11 +117,11 @@ const PostView = () => {
     }, []);
     
     return (
-        <div className='space-y-4 mb-5 w-full my-5'> 
+        <div className='justify-center w-full align-top min-h-screen max-h-full'> 
         <Navbar page="post"/>
         {/* <h1>Post {state.selected_post_id}</h1> */}
         {EditPost
-            ?<form onSubmit={handleSubmit} className="w-1/2 h-full m-auto border-4 border-black rounded-md px-5 py-5 bg-orange">
+            ?<form onSubmit={handleSubmit} className="w-1/2 h-full mt-24 mx-auto border-4 border-black rounded-md px-5 py-5 bg-orange">
                 <h2 className='px-4 py-2 font-coolvetica'>Title: <input 
                     type="text"
                     id="title"
@@ -155,7 +156,7 @@ const PostView = () => {
                     <button onClick={handleCancel} className='my-auto mx-5 px-1 py-2 font-coolvetica  text-2xl underline'>Cancel</button>
                 </div>
             </form>
-            :<div className=''>
+            :<div className='mt-24 justify-self-center align-top mb-5'>
                 <div className='box w-1/2 my-5 mx-auto border-4 border-black rounded-lg px-4 py-4 bg-orange'>
                     <h2 className='font-coolvetica text-3xl'>{post.title} </h2>
                     <div className='flex justify-between px-5 py-2'>
@@ -163,20 +164,18 @@ const PostView = () => {
                         <p className='text-2xl font-coolvetica'> Created by: {post.username}</p>
                     </div>
                     <p className='px-4 py-2 font-coolvetica'>{post.body}</p>
-                    {state.user_id === post.user_id
+                    {parseInt(state.user_id) === post.user_id
                         ? <>
                         <button onClick={handleEdit} className='my-auto mx-4 px-1 py-2 font-coolvetica  text-2xl underline'>Edit Post</button>
                         <button onClick={handleDelete} className='my-auto mx-4 px-1 py-2 font-coolvetica  text-2xl underline'>Delete Post</button>
                         </>
-                        : ""}
+                        :""}
                 </div>
                 <div>
                     <CommentList />
+                    {/* <Link to="/threads" className='my-auto px-1 py-2 font-coolvetica  text-3xl underline'>Back to threads</Link> */}
                 </div>
             </div>}
-            <div className='py-5'>
-                <Link to="/threads" className='my-auto px-1 py-2 font-coolvetica  text-3xl underline'>Back to threads</Link>
-            </div>
             {/* <Link to="/" className='px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
                     hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link> */}
             </div>

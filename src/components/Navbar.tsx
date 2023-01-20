@@ -26,7 +26,7 @@ export const Navbar = (props:NavbarProps) => {
             ?<h2 className="text-white text-4xl font-coolvetica"> Threads</h2>
             :
             <Link to="/threads">
-                <h2 className="text-white text-4xl font-coolvetica">{"<<<Threads"}</h2>
+                <h2 className="text-white text-4xl font-coolvetica hover:cursor-pointer hover:bg-gray-700 rounded-md px-3 py-2">{"<<<Threads"}</h2>
             </Link>
             }
             {
@@ -36,12 +36,12 @@ export const Navbar = (props:NavbarProps) => {
                 <div onClick={() => handleClick("all")}>All</div>
             </li>
             {options.map((option)=>
-            <li className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-coolvetica hover:cursor-pointer">
-                <div key={option.value} onClick={()=> handleClick(option.value)}>{option.label}</div>
+            <li key={option.value} className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-coolvetica hover:cursor-pointer">
+                <div onClick={()=> handleClick(option.value)}>{option.label}</div>
             </li>
             )}
             </ul>
-            : ""
+            : "" //can add more stuff later on
             }
             <a href="/" className="text-white hover:bg-gray-700 hover:text-lred px-3 py-2 rounded-md text-2xl font-coolvetica hover:cursor-pointer"
             onClick={handleLogout}>Logout</a>
