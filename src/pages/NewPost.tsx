@@ -7,7 +7,7 @@ import DropDown from "../components/DropDown"
 
 const NewPost = () => {
     const {state,dispatch} = useAppState()
-    const API_URL = "http://localhost:3000/posts"
+    const API_URL = "https://retrohub-frontend.herokuapp.com/posts"
     const headers = {"authorization": "bearer " + state.token}
     const navigate = useNavigate()
     const goThreads = () => {
