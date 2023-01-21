@@ -5,8 +5,8 @@ import axios from "axios";
 import { useAppState } from "../AppState";
 
 
-const SIGN_IN_URL = "https://retrohub-frontend.herokuapp.com/auto_login"
-const SIGN_UP_URL = "https://retrohub-frontend.herokuapp.com/users"
+const SIGN_IN_URL = "https://retrohub-backend.herokuapp.com/auto_login"
+const SIGN_UP_URL = "https://retrohub-backend.herokuapp.com/users"
 
 
 const Auth = () => {

@@ -7,7 +7,7 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies()
 
 const initialState = {
-    url: "https://retrohub-frontend.herokuapp.com/",
+    url: "https://retrohub-backend.herokuapp.com/",
     token: cookies.get('jwt_authorization'),
     username: cookies.get('username'),
     user_id: cookies.get('user_id'),

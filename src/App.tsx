@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-// import './App.css';
 import Auth from './pages/Auth';
 import Threads from './pages/ThreadView';
 import Posts from './pages/PostView';

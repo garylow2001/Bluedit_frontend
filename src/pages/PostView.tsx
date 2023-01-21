@@ -13,7 +13,7 @@ const PostView = () => {
     const goThreads = () => {
         return navigate('/threads')
     }
-    const API_URL = "https://retrohub-frontend.herokuapp.com/posts/" + state.selected_post_id
+    const API_URL = "https://retrohub-backend.herokuapp.com/posts/" + state.selected_post_id
     const headers = {"authorization": "bearer " + state.token}
 
     const [post,setpost] = useState({

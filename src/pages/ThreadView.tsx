@@ -6,7 +6,7 @@ import { useAppState } from '../AppState';
 import { Navbar } from '../components/Navbar';
 
 
-const API_URL = "https://retrohub-frontend.herokuapp.com/posts"
+const API_URL = "https://retrohub-backend.herokuapp.com/posts"
 export interface postInterface {
     id: number,
     title: string,
