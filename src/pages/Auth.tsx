@@ -1,6 +1,5 @@
 import React from "react";
 import { useState} from "react";
-// import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAppState } from "../AppState";
@@ -43,7 +42,7 @@ const Auth = () => {
         else if (type === "signup") {
             return axios.post(SIGN_UP_URL, {"username":formData.username,"password":formData.password}).then(
                 (resp) => {
-                    alert("Welcome to Bluedit "+resp.data.user.username+ " you may login now!")
+                    alert("Welcome to RetroHub "+resp.data.user.username+ " you may login now!")
                     setAuthType("login")
                     setFormData({username:"",password:""})
                 }
@@ -80,7 +79,7 @@ const Auth = () => {
     }
     return (
         <div className="w-1/2 border-4 rounded-lg px-5 py-5 bg-orange border-black">
-            <h1 className="mt-6 text-center text-4xl font-coolvetica tracking-tight white"> Welcome to ComHub</h1>
+            <h1 className="mt-6 text-center text-4xl font-coolvetica tracking-tight white"> Welcome to RetroHub</h1>
             <h1 className="mt-2 text-center text-3xl white font-coolvetica"> {(AuthType==="login")?"Sign In":"Sign Up"}</h1>
             <form className="space-y-0.25 mt-8"onSubmit={handleSubmit}>
                 <div className="">
