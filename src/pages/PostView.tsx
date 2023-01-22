@@ -81,8 +81,8 @@ const PostView = () => {
     const chooseCategory = (cat:string) => {
         setFormData({...formData,["category"]: cat})
     }
-    const handleDelete = () => {
-        axios.delete(API_URL,{headers}
+    const handleDelete = async () => {
+        await axios.delete(API_URL,{headers}
             ).then(
                 (resp) => console.log(resp)
             ).catch(
