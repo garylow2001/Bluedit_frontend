@@ -11,8 +11,7 @@ const initialState = {
     token: cookies.get('jwt_authorization'),
     username: cookies.get('username'),
     user_id: cookies.get('user_id'),
-    selected_post_id: cookies.get('selected_post_id'),
-    selected_comment_id: null
+    selected_post_id: cookies.get('selected_post_id')
 }
 
 interface StateInterface {
@@ -20,8 +19,7 @@ interface StateInterface {
     token: string,
     username: string,
     user_id: number,
-    selected_post_id: number,
-    selected_comment_id: number
+    selected_post_id: number
 }
 
 
@@ -43,6 +41,9 @@ const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
             break
         case "logout":
             cookies.remove("jwt_authorization")
+            cookies.remove("username")
+            cookies.remove("user_id")
+            cookies.remove("selected_post_id")
             break
         case "setpost":
             newState = {...state, ...action.payload}
