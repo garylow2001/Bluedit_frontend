@@ -1,4 +1,4 @@
-import { Link, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import { Navbar } from '../components/Navbar';
 
 
 const PostView = () => {
-    const {state,dispatch} = useAppState()
+    const {state} = useAppState()
     const navigate = useNavigate()
     const goThreads = () => {
         return navigate('/threads')
@@ -132,14 +132,8 @@ const PostView = () => {
                     px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-indigo-500 
                     focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
                 /></h2>
-                <p className='px-4 py-2 font-coolvetica relative'>Category: <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
-                {/* <input 
-                    type="text" //change to dropdown
-                    id="category"
-                    onChange={handleChange}
-                    value={formData.category}
-                    required
-                />  */}
+                <p className='px-4 py-2 font-coolvetica relative'>Category: 
+                    <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
                 </p>
                 <p className='px-4 py-2 font-coolvetica'>Body: <input 
                     type="text"

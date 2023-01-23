@@ -38,7 +38,6 @@ const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
             cookies.set("user_id",newState.user_id)
             console.log(newState) //comment out once done
             return newState
-            break
         case "logout":
             cookies.remove("jwt_authorization")
             cookies.remove("username")
@@ -50,12 +49,10 @@ const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
             cookies.set("selected_post_id",newState.selected_post_id)
             console.log(newState) //comment out once done
             return newState
-            break
         case "setcomment":
             newState = {...state, ...action.payload}
             console.log(newState) //comment out once done
             return newState
-            break
         default:
             return state
     }
