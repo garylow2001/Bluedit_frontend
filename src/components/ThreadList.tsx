@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppState } from '../AppState';
+import { postsInterface } from '../pages/ThreadView';
+import { postInterface } from '../pages/ThreadView';
 
 
 const capitalizeName = (name:string) => {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
-const Posts = (props:any) => {
+const Posts = (props:{posts:postsInterface}) => {
     const {dispatch} = useAppState()
     return <div className='space-y-4 mb-5 w-full my-5'>
         {props.posts
-        .sort(function(a:any,b:any) {
-            a.updated_at.localeCompare(b.updated_at) 
+        .sort((a:postInterface,b:postInterface) => {
+            return a.updated_at.localeCompare(b.updated_at)
         })
         .reverse()
-        .map((post:any)=> {
+        .map((post:postInterface)=> {
             return <div key={post.id} className='box w-1/2 m-auto border-4 border-black shadow-md
                     shadow-black rounded-lg px-4 py-4 bg-orange
                     hover:shadow-black hover:shadow-lg hover:scale-105 hover:cursor-pointer'>

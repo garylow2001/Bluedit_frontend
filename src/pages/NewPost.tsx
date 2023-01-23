@@ -27,9 +27,9 @@ const NewPost = () => {
     ///////////////////////////////////////////////////////////////////////////
     /////////////////////////// Handle Posts //////////////////////////////////
     const handleChange= (e: React.ChangeEvent<HTMLTextAreaElement|HTMLInputElement>) => {
-        setFormData({...formData, [e.target.id]: e.target.value});
-            e.target.style.height = '36px';
-            e.target.style.height = `${e.target.scrollHeight}px`
+        setFormData({...formData, [e.target.id]: e.target.value})
+        e.target.style.height = '36px'
+        e.target.style.height = `${e.target.scrollHeight}px`
     }
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -66,7 +66,7 @@ const NewPost = () => {
                     onChange={handleChange}
                     value={formData.body}
                     required
-                    className="block w-1/2 h-10 mx-auto appearance-none rounded-md border border-gray-300 
+                    className="block w-1/2 h-9 mx-auto appearance-none rounded-md border border-gray-300 
                             px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
                             focus:outline-none focus:ring-white sm:text-sm bg-slate-200 resize-none overflow-hidden"
                 />

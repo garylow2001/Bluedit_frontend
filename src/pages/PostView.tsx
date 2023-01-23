@@ -75,8 +75,10 @@ const PostView = () => {
         setFormData(initialFormData)
         setEditPost(false)
     }
-    const handleChange= (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({...formData, [e.target.id]: e.target.value});
+    const handleChange= (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+        setFormData({...formData, [e.target.id]: e.target.value})
+        e.target.style.height = '36px'
+        e.target.style.height = `${e.target.scrollHeight}px`
     }
     const chooseCategory = (cat:string) => {
         setFormData({...formData,["category"]: cat})
@@ -135,15 +137,14 @@ const PostView = () => {
                 <p className='px-4 py-2 font-coolvetica relative'>Category: 
                     <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
                 </p>
-                <p className='px-4 py-2 font-coolvetica'>Body: <input 
-                    type="text"
+                <p className='px-4 py-2 font-coolvetica'>Body: <textarea
                     id="body"
                     onChange={handleChange}
                     value={formData.body}
                     required
                     className="relative block w-1/2 m-auto appearance-none rounded-md border border-gray-300 
                     px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-indigo-500 
-                    focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
+                    focus:outline-none focus:ring-white sm:text-sm bg-slate-200 resize-none overflow-hidden"
                 /></p>
                 <div className='justify-center'>
                     <button className='my-auto mx-5 px-1 py-2 font-coolvetica  text-2xl underline'>Change</button>

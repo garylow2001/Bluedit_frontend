@@ -11,9 +11,11 @@ export interface postInterface {
     id: number,
     title: string,
     body: string,
-    category: string
+    category: string,
+    username: string,
+    updated_at: string
 }
-interface postsInterface extends Array<postInterface>{}
+export interface postsInterface extends Array<postInterface>{}
 
 const Threads = () => {
     const {state} = useAppState()
@@ -64,7 +66,6 @@ const Threads = () => {
                     className='m-5 px-2 py-2 font-coolvetica border-2 border-black rounded-md bg-red-600 text-black
                     hover:bg-red-400'>Click here to start a new thread!</Link>
                 <Posts posts={posts} />
-                {/* <Link to="/">Logout</Link> */}
             </div>
         </div>
     )

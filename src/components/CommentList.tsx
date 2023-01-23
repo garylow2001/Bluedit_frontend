@@ -2,6 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
 
+interface CommentInterface {
+    body:string,
+    id:number,
+    post_id:number,
+    user_id:number,
+    username:string
+}
+
 const CommentList= () => {
     const {state, dispatch} = useAppState()
     const headers = {"authorization": "bearer " + state.token}
@@ -123,8 +131,8 @@ const CommentList= () => {
             hover:bg-red-400'>Add comment</button>
         }
         {comments
-        .sort((a:any,b:any) => (a.id > b.id) ? 1 : -1)
-        .map((comment:any) =>
+        .sort((a:CommentInterface,b:CommentInterface) => (a.id > b.id) ? 1 : -1)
+        .map((comment:CommentInterface) =>
                 <div key={comment.id} className='box w-1/2 my-5 mx-auto border-4
                 border-black shadow-md shadow-black rounded-lg px-4 py-4 bg-orange'>
                     {(SelectedCommentID === comment.id)?
