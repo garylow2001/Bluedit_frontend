@@ -13,6 +13,9 @@ const PostView = () => {
     const goThreads = () => {
         return navigate('/threads')
     }
+    const goHome = () => {
+        return navigate('/')
+    }
     const API_URL = "https://retrohub-backend.herokuapp.com/posts/" + state.selected_post_id
     const headers = {"authorization": "bearer " + state.token}
 
@@ -60,11 +63,12 @@ const PostView = () => {
         }
     ).catch(
         (err) => {
-            if (err.response.data.message === "Please log in") {
-                console.log( "redirect to log in") //make a redirect to login page
+            if (state.token) {
+                console.log(err)
             }
             else {
-                console.log(err)
+                goHome() //no token, means not logged in
+                alert("you need to login first!")
         }
     })
     //////////////////////////////// Handle Post //////////////////////////////////
@@ -112,8 +116,6 @@ const PostView = () => {
     //////////////////////////////////////////////////////////////////////////
 
     useEffect(()=> {
-        // let mounted = true;
-        // dispatch({type:"setpost", payload:{selected_post_id: post_id}})
         console.log(state)
         getPost()
     }, []);
@@ -121,7 +123,6 @@ const PostView = () => {
     return (
         <div className='justify-center w-full align-top min-h-screen max-h-full'> 
         <Navbar page="post"/>
-        {/* <h1>Post {state.selected_post_id}</h1> */}
         {EditPost
             ?<form onSubmit={handleSubmit} className="w-1/2 h-full mt-24 mx-auto border-4 border-black rounded-md px-5 py-5 bg-orange">
                 <h2 className='px-4 py-2 font-coolvetica'>Title: <input 
@@ -168,12 +169,9 @@ const PostView = () => {
                 </div>
                 <div>
                     <CommentList />
-                    {/* <Link to="/threads" className='my-auto px-1 py-2 font-coolvetica  text-3xl underline'>Back to threads</Link> */}
                 </div>
             </div>}
-            {/* <Link to="/" className='px-1 py-2 font-coolvetica border-2 rounded-md bg-darkgrey text-white
-                    hover:bg-grey hover:shadow-lg hover:shadow-white'>Logout</Link> */}
-            </div>
+        </div>
     )
 }
 export default PostView;

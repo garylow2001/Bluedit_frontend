@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useAppState } from "../AppState"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
@@ -12,6 +12,9 @@ const NewPost = () => {
     const navigate = useNavigate()
     const goThreads = () => {
         return navigate('/threads')
+    }
+    const goHome = () => {
+        return navigate('/')
     }
     const [formData,setFormData] = useState({
         title: "",
@@ -44,6 +47,14 @@ const NewPost = () => {
         }
     }
     /////////////////////////////////////////////////////////////////////////////
+
+    useEffect(()=>{
+        if (!state.token) {
+            goHome()
+            alert("you need to login first!")
+        }
+    },[])
+
     return (
         <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-4 border-black rounded-md px-5 py-5 bg-orange">
             <h1 className="mb-5 text-3xl font-medium"> Add a new post</h1>

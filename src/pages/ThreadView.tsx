@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Posts from '../components/ThreadList';
 import { useAppState } from '../AppState';
@@ -18,9 +18,15 @@ export interface postInterface {
 export interface postsInterface extends Array<postInterface>{}
 
 const Threads = () => {
+    const navigate = useNavigate()
     const {state} = useAppState()
     const [allPosts,setAllPosts] = useState<postsInterface>([]);
     const [posts,setposts] = useState<postsInterface>([]);
+
+    const goHome = () => {
+        return navigate("/")
+    }
+
     const handleChangeCategory = (cat:string) => {
         if (cat === "all") {
             setposts(allPosts)
@@ -47,7 +53,8 @@ const Threads = () => {
         ).catch(
             (err) => {
                 if (err.response.data.message === "Please log in") {
-                    console.log( "redirect to log in") //make a redirect to login page
+                    goHome()
+                    alert("you need to login first!")
                 }
                 else {
                     console.log(err)
