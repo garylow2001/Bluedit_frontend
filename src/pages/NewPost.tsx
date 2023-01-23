@@ -62,7 +62,8 @@ const NewPost = () => {
                     required
                     className="block w-1/2 m-auto h-full appearance-none rounded-md border border-gray-300 
                             px-3 py-2 text-black placeholder:text-black focus:z-10 focus:border-black
-                            focus:outline-none focus:ring-white sm:text-sm bg-slate-200"
+                            focus:outline-none focus:ring-white sm:text-sm bg-slate-200 break-all whitespace-pre-wrap"
+                    aria-multiline
                 />
             </h2>
             <button className='my-2 py-2 font-medium border-2 border-black rounded-md bg-red-600 text-black
