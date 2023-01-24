@@ -27,7 +27,6 @@ const CommentList= () => {
         await axios.get(API_URL,{headers})
         .then((resp)=> {
             setComments(resp.data)
-            console.log(resp.data)
         }).catch((err) => {
             console.log(err)
         })
@@ -48,7 +47,6 @@ const CommentList= () => {
             setSelectedCommentID(-1)
             setFormData({...formData, ["body"]:""})
             setCommentAction("AddComment")
-            console.log(CommentAction)
         }
     }
 
@@ -58,7 +56,6 @@ const CommentList= () => {
 
     const handleEdit = async (id:number,body:string) => {
         setCommentAction("EditComment")
-        console.log(CommentAction)
         dispatch({type:"setcomment",payload:{selected_comment_id:id}})
         setIsClickedAdd(false)
         setSelectedCommentID(id)
@@ -69,7 +66,6 @@ const CommentList= () => {
         if (type === "AddComment") {
             return axios.post(API_URL, formData,{headers})
             .then((resp)=> {
-                console.log(resp)
                 setIsClickedAdd(false)
             })
             .catch((err)=> console.log(err))
@@ -78,7 +74,6 @@ const CommentList= () => {
             const PUT_API_URL = API_URL + "/" + SelectedCommentID 
             return axios.put(PUT_API_URL, formData, {headers})
             .then((resp) => {
-                console.log(resp)
                 setSelectedCommentID(-1)
             })
             .catch((err) => console.log(err))
@@ -97,7 +92,6 @@ const CommentList= () => {
         const DELETE_API_URL = API_URL + "/" + id
         axios.delete(DELETE_API_URL,{headers})
         .then((resp) => {
-            console.log(resp)
             getComments()
         })
         .catch((err) => console.log(err))

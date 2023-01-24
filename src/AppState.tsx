@@ -36,7 +36,6 @@ const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
             cookies.set("jwt_authorization",newState.token)
             cookies.set("username",newState.username)
             cookies.set("user_id",newState.user_id)
-            console.log(newState) //comment out once done
             return newState
         case "logout":
             cookies.remove("jwt_authorization")
@@ -47,11 +46,9 @@ const reducer = (state: StateInterface, action: {type:string, payload:any}) => {
         case "setpost":
             newState = {...state, ...action.payload}
             cookies.set("selected_post_id",newState.selected_post_id)
-            console.log(newState) //comment out once done
             return newState
         case "setcomment":
             newState = {...state, ...action.payload}
-            console.log(newState) //comment out once done
             return newState
         default:
             return state

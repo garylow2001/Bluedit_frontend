@@ -16,7 +16,7 @@ const Add_Comment = () => {
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
         await axios.post(API_URL, formData,{headers})
-            .then((resp)=> console.log(resp))
+            .then()
             .catch((err)=> console.log(err))
         //refresh post page?
     }

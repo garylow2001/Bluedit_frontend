@@ -2,7 +2,7 @@
 
 This Project was created in Conjunction with the CVWO assignment.
 
-### Info for submission purpose
+### Info for assignment purpose
 
 Name: Low Bi Shen, Gary  
 

@@ -1,5 +1,5 @@
 import { useNavigate} from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppState } from '../AppState';
 import axios from 'axios';
 import CommentList from '../components/CommentList';
@@ -18,6 +18,8 @@ const PostView = () => {
     }
     const API_URL = "https://retrohub-backend.herokuapp.com/posts/" + state.selected_post_id
     const headers = {"authorization": "bearer " + state.token}
+
+    const TextAreaRef = useRef<HTMLTextAreaElement|null>(null)
 
     const [post,setpost] = useState({
         username: null,
@@ -81,7 +83,6 @@ const PostView = () => {
     }
     const handleChange= (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
         setFormData({...formData, [e.target.id]: e.target.value})
-        e.target.style.height = '36px'
         e.target.style.height = `${e.target.scrollHeight}px`
     }
     const chooseCategory = (cat:string) => {
@@ -89,8 +90,6 @@ const PostView = () => {
     }
     const handleDelete = async () => {
         await axios.delete(API_URL,{headers}
-            ).then(
-                (resp) => console.log(resp)
             ).catch(
                 (err) => console.log(err)
             )
@@ -105,7 +104,6 @@ const PostView = () => {
         },{headers}
         ).then(
             (resp) => {
-                console.log(resp.data)
                 setEditPost(false)
             }
         ).catch(
@@ -116,9 +114,13 @@ const PostView = () => {
     //////////////////////////////////////////////////////////////////////////
 
     useEffect(()=> {
-        console.log(state)
         getPost()
-    }, []);
+        if (TextAreaRef && TextAreaRef.current) {
+            TextAreaRef.current.style.height = "0px"
+            const scrollHeight = TextAreaRef.current.scrollHeight
+            TextAreaRef.current.style.height = scrollHeight + "px"
+        }
+    }, [EditPost]);
     
     return (
         <div className='justify-center w-full align-top min-h-screen max-h-full'> 
@@ -139,6 +141,7 @@ const PostView = () => {
                     <DropDown placeHolder={capitalizeName(formData.category)} chooseCategory={chooseCategory}/>
                 </p>
                 <p className='px-4 py-2 font-coolvetica'>Body: <textarea
+                    ref={TextAreaRef}
                     id="body"
                     onChange={handleChange}
                     value={formData.body}

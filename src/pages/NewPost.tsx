@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useEffect, useState } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { useAppState } from "../AppState"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
@@ -16,6 +16,9 @@ const NewPost = () => {
     const goHome = () => {
         return navigate('/')
     }
+
+    const TextAreaRef = useRef<HTMLTextAreaElement|null>(null)
+
     const [formData,setFormData] = useState({
         title: "",
         category:"",
@@ -31,8 +34,6 @@ const NewPost = () => {
     /////////////////////////// Handle Posts //////////////////////////////////
     const handleChange= (e: React.ChangeEvent<HTMLTextAreaElement|HTMLInputElement>) => {
         setFormData({...formData, [e.target.id]: e.target.value})
-        e.target.style.height = '36px'
-        e.target.style.height = `${e.target.scrollHeight}px`
     }
     const handleSubmit = async (e:React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -41,7 +42,6 @@ const NewPost = () => {
         }
         else {
             await axios.post(API_URL, formData,{headers})
-                .then((resp)=> console.log(resp))
                 .catch((err)=> console.log(err))
             goThreads()
         }
@@ -53,7 +53,16 @@ const NewPost = () => {
             goHome()
             alert("you need to login first!")
         }
+        
     },[])
+
+    useEffect(()=> {
+        if (TextAreaRef && TextAreaRef.current) {
+            TextAreaRef.current.style.height = "0px"
+            const scrollHeight = TextAreaRef.current.scrollHeight
+            TextAreaRef.current.style.height = scrollHeight + "px"
+        }
+    },[formData.body])
 
     return (
         <form onSubmit={handleSubmit} className="h-full w-1/2 space-y-2 border-4 border-black rounded-md px-5 py-5 bg-orange">
@@ -72,7 +81,8 @@ const NewPost = () => {
             <h2 className="text-2xl font-medium"> Category:</h2>
             <DropDown placeHolder="Select..." chooseCategory={chooseCategory}/>
             <h2 className="text-2xl font-medium"> Body: 
-            <textarea
+                <textarea
+                    ref={TextAreaRef}
                     id="body"
                     onChange={handleChange}
                     value={formData.body}
